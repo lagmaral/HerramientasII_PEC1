@@ -1,0 +1,57 @@
+{
+  "name": "uoc-boilerplate",
+  "version": "3.9.0",
+  "private": true,
+  "description": "Boilerplate for Advanced HTML/CSS Tools UOC students",
+  "scripts": {
+    "parcel:serve": "parcel -p 8123 --target web --open",
+    "parcel:build": "parcel build --target web --no-source-maps --no-cache",
+    "clean": "rimraf dist .cache .cache-loader .parcel-cache",
+    "dev": "npm-run-all clean parcel:serve",
+    "build": "npm-run-all clean parcel:build",
+    "lint:style": "stylelint \"src/**/*.scss\"",
+    "test": "echo 'Everything is working as expected ✅\nStart working on your project by running \\033[1mnpm run dev\\033[0m'"
+  },
+  "targets": {
+    "web": {
+      "context": "browser",
+      "publicUrl": "./",
+      "source": "src/index.html",
+      "engines": {
+        "browsers": "last 2 versions, > 0.5%, not dead"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lagmaral/HerramientasII_PEC1.git"
+  },
+  "author": {
+    "name": "Alberto Lago Martín",
+    "email": "lagmaral@uoc.edu"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lagmaral/HerramientasII_PEC1.git/issues"
+  },
+  "homepage": "https://github.com/lagmaral/HerramientasII_PEC1.git#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.12.0",
+    "autoprefixer": "^10.4.15",
+    "eslint-plugin-import": "^2.31.0",
+    "npm-run-all": "^4.1.5",
+    "parcel": "^2.12.0",
+    "postcss-preset-env": "^9.1.1",
+    "posthtml-include": "^1.7.4",
+    "rimraf": "^5.0.1",
+    "sass": "^1.79.5",
+    "sharp": "^0.31.3",
+    "stylelint": "^16.10.0",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "stylelint-order": "^6.0.4",
+    "stylelint-scss": "^6.7.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.6.0"
+  }
+}

@@ -1,0 +1,129 @@
+/* Establece box-sizing para todos los elementos para incluir bordes y padding en las dimensiones */
+* {  box-sizing: border-box; /* Incluye padding y bordes en el tamaño total de los elementos */}
+
+/* Elimina los márgenes predeterminados del cuerpo */
+body {margin: 0; /* Establece márgenes en 0 para evitar espacios innecesarios */}
+
+/* Estilos generales para el contenedor principal */
+.container {
+  display: block; /* Establece que el contenedor sea un elemento de bloque */
+  width: 100%; /* El contenedor ocupa el ancho completo de la pantalla */
+
+  /* Estilos para la imagen dentro del contenedor */
+  &__image {
+    width: 100%; /* La imagen ocupa el 100% del ancho del contenedor */
+    max-height: 400px; /* Altura máxima de la imagen */
+    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin distorsionarse */
+    position: relative; /* Posiciona la imagen de forma relativa para los elementos hijos */
+    top: 0; /* Alinea la imagen en la parte superior */
+    z-index: 0; /* Asegura que la imagen esté detrás de otros elementos */
+  }
+
+  /* Sección principal que contiene dos columnas: izquierda y derecha */
+  &__sections {
+    display: grid; /* Utiliza un sistema de grid para la disposición de columnas */
+    grid-template-columns: 1fr 3fr; /* Dos columnas: 1/4 para la izquierda y 3/4 para la derecha */
+    width: 100%;
+    max-width: 1200px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centra el contenido horizontalmente */
+    padding: 1.2rem; /* Espaciado interno del contenedor */
+    gap: 10px; /* Espaciado entre columnas */
+
+     /* Cambia la disposición a una sola columna en móviles */
+     @media (width <= 768px) { grid-template-columns: 1fr; /* Cambia a una columna única */ }
+
+    /* Menú de la sección izquierda */
+    &__left {
+      padding: 10px; /* Espaciado interno del menú */
+      cursor: pointer; /* Cambia el cursor a puntero al pasar sobre el menú */
+
+      @media (width <= 768px) {width: 100%; /* Asegura que ocupe todo el ancho disponible */}
+
+      /* Lista dentro del menú */
+      &__menu {
+        list-style-type: none; /* Quita los marcadores de lista */
+        padding: 0; /* Elimina el padding de la lista */
+        margin: 0; /* Elimina márgenes de la lista */
+        background-color: $black-color; /* Usa la variable de color negro para el fondo */
+
+        /* Elementos de la lista del menú alineados al centro */
+        li {text-align: center; /* Alinea el texto de los elementos de la lista al centro */}
+
+        /* Enlaces dentro del menú */
+        &__link {
+          text-decoration: none; /* Elimina el subrayado de los enlaces */
+          color: $header-footer-font-default-color; /* Color definido para el texto de los enlaces */
+          display: block; /* Hace que el enlace ocupe todo el espacio disponible */
+          padding: 10px; /* Espaciado interno del enlace */
+          transition: background-color 0.3s; /* Transición suave al cambiar el color de fondo */
+
+          /* Estilos para el enlace activo */
+          &.active {
+            background-color: $black-color-contraste; /* Color de fondo para el enlace activo */
+            box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+            padding-left: 5px; /* Espacio a la izquierda */
+            border-left: 5px solid $barakaldo-yellow; /* Línea amarilla a la izquierda */
+            font-weight: bold; /* Negrita para el enlace activo */
+          }
+
+          /* Estilos para el enlace al pasar el ratón */
+          &:hover {
+            background-color: $black-color-contraste; /* Color de fondo al pasar el ratón */
+            box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+            padding-left: 5px; /* Espacio a la izquierda */
+            border-left: 5px solid $barakaldo-yellow; /* Línea amarilla a la izquierda */
+            font-weight: bold; /* Negrita al pasar el ratón */
+          }
+        }
+      }
+    }
+
+    /* Sección derecha con el contenido principal */
+    &__right {
+      padding: 10px; /* Espaciado interno de la sección derecha */
+
+      /* Mostrar el enlace "Leer más" en pantallas pequeñas */
+      @media (width <= 768px) {width: 100%; /* Asegura que ocupe todo el ancho disponible */}
+
+      /* Cada elemento dentro de la sección derecha */
+      &__element {
+        display: none; /* Oculto por defecto, se mostrará dinámicamente */
+
+        /* Mostrar solo cuando esté activo */
+        &.active { display: block; /* Muestra el elemento activo */}
+
+        /* Estilos del título */
+        &__title {
+          font-weight: bold; /* Texto en negrita */
+          text-decoration: underline; /* Subrayado */
+          text-decoration-color: $barakaldo-yellow; /* Color del subrayado amarillo */
+          display: flex; /* Utiliza flexbox para la alineación */
+          align-items: center; /* Alinea verticalmente el contenido */
+          gap: 8px; /* Espaciado entre ícono y texto */
+        }
+
+        /* Estilos del párrafo dentro de la sección */
+        &__paragraph {
+          overflow: hidden; /* Oculta el desbordamiento del contenido */
+          height: auto; /* Altura automática para el contenido */
+          transition: height 0.3s ease-in-out; /* Transición suave al expandir */
+
+          &__expanded { height: auto; /* Altura ajustada automáticamente cuando se expande */ }
+        }
+
+        /* Estilos del enlace "Leer más" */
+        &__toggle-text {
+          display: none; /* Oculto por defecto, solo se muestra en pantallas pequeñas */
+          color: $barakaldo-yellow; /* Color del enlace "Leer más" */
+          cursor: pointer; /* Cambia el cursor a puntero al pasar sobre el enlace */
+          text-decoration: underline; /* Subrayado para el enlace "Leer más" */
+
+          /* Mostrar el enlace "Leer más" en pantallas pequeñas */
+          @media (width <= 768px) {display: block; /* Muestra el enlace en pantallas pequeñas */ }
+        }
+      }
+    }
+
+
+  }
+}

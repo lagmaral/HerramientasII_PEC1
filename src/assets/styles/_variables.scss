@@ -1,0 +1,18 @@
+@use "sass:color";
+
+$font-family-sans-serif: -apple-system, blinkmacsystemfont, "Segoe UI", roboto,
+  "Helvetica Neue", arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol";
+$font-family-serif: "Georgia", "Times New Roman", serif;
+$mq-min-width: 420px;
+
+/* Variables para colores y medidas */
+$barakaldo-yellow: #F7D24A; /* Color amarillo de Barakaldo CF */
+$header-footer-font-default-color: #FFF; /* Color blanco */
+$black-color: #000; /* Color negro */
+$black-color-contraste: #333; /* Color negro */
+$gray-color: #999; /* Color gris */
+$padding-default: 10px 170px; /* Espaciado lateral por defecto */
+$logo-height-desktop: 100px; /* Altura del logo en escritorio */
+$logo-height-mobile: 50px; /* Altura del logo en móviles */
+
