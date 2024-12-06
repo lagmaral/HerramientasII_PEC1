@@ -1,264 +1,88 @@
-// Mixin para alinear elementos con flexbox
-@mixin flex-center {
-  display: flex;
-  align-items: center;
-}
+@layer headerLayer {
+  /* Bloque principal: header */
+  .header {
+      padding: 1rem 10lvw; /* Separación lateral */
 
-.header {
-  display: block; // Estructura de bloque
-  width: 100%; // Ancho completo
-  position: fixed; // Fijo en la parte superior
-  z-index: 1000; // Asegura que el header esté por encima de otros elementos
-
-  // Logo
-  &__logo {
-    position: absolute; // Posicionamiento absoluto
-    top: 0; // Al inicio del header
-    left: 1.2rem; // Espacio a la izquierda
-
-    @include flex-center; // Aplicar el mixin de flex
-
-    &--img {
-      max-height: 100%; // Máxima altura disponible
-      height: $logo-height-desktop; // Altura por defecto
-
-      // Ajuste de altura para móviles
-      @media (width <= 768px) { height: $logo-height-mobile; } // Altura ajustada para móviles
-    }
-  }
-
-  // Parte superior del header
-  &__top {
-    background-color: $header-footer-font-default-color; // Color de fondo
-    padding: $padding-default; // Espaciado lateral
-
-    @include flex-center; // Aplicar el mixin de flex
-
-    justify-content: flex-end; // Alinear contenido a la derecha
-    height: 50px; // Altura fija
-
-    // Sección de redes sociales
-    &__social {
-      @include flex-center; // Aplicar el mixin de flex
-
-      &__list {
-        display: flex; // Alinear los elementos en fila
-        list-style: none; // Sin estilo de lista
-        margin: 0; // Sin márgenes
-        padding: 0; // Sin padding
-
-        li { margin-left: 10px; } // Espaciado entre ítems
-
-        &__item {
-          color: $black-color; // Color de los iconos
-          font-size: 1.2rem; // Tamaño de la fuente
-          text-decoration: none; // Sin subrayado
-        }
+      /* Usar el soporte de OKLCH si está disponible */
+      @supports (color: oklch(0.6 0.2 90)) {
+        background-color: $header-footer-background-oklch;
+        color: $header-footer-font-color-oklch;
       }
-    }
 
-    // Sección de selección de idioma
-    &__lang {
-      @include flex-center; // Aplicar el mixin de flex
-
-      padding-left: 1.2rem; // Espacio a la izquierda
-
-      &__select {
-        margin-left: 20px; // Espacio a la izquierda
-        padding: 5px; // Padding interno
-        font-size: 1rem; // Tamaño de la fuente
-        border: 1px solid $gray-color; // Borde gris
-        color: $black-color; // Color del texto
-        background-color: $header-footer-font-default-color; // Fondo
-      }
-    }
-
-    // Ocultar en móviles y tablets
-    @media (width <= 768px) { display: none; } // Ocultar la parte superior en móviles
-  }
-
-  // Parte inferior del header
-  &__bottom {
-    background-color: $black-color; // Color de fondo negro
-    padding: $padding-default; // Espaciado lateral
-
-    @include flex-center; // Aplicar el mixin de flex
-
-    justify-content: flex-end;
-    height: 50px; // Altura fija
-
-    // Menú de navegación
-    &__menu {
-      @include flex-center; // Aplicar el mixin de flex
-
-      &__btn {
-        padding: 13px; // Espaciado interno
-        font-size: 16px; // Tamaño de la fuente
-        background-color: $black-color; // Color de fondo negro
-        color: $header-footer-font-default-color; // Color del texto
-        border: 2px solid $black-color; // Borde negro
-        cursor: pointer; // Cambiar el cursor al pasar
-        transition: background-color 0.3s ease, color 0.3s ease; // Transición suave
-
-        // Efectos en hover y focus
-        &:hover,
-        &:focus {
-          background-color: $header-footer-font-default-color; // Fondo al pasar el mouse
-          color: $black-color; // Color del texto al pasar el mouse
-          outline: none; // Eliminar contorno por defecto
+      /* Usar Display-P3 si OKLCH no está disponible, pero Display-P3 sí lo está */
+      @supports (color: color(display-p3 0.95 0.95 0.98)) {
+        @supports not (color: oklch(0.6 0.2 90)) {
+          background-color: $header-footer-background-display-p3;
+          color: $header-footer-font-color-display-p3;
         }
       }
 
-      // Menú desplegable
-      &__dropdown {
-        display: none; // Ocultar por defecto
-        position: absolute; // Posicionamiento absoluto
-        top: 100%; // Justo debajo del botón
-        width: 20%; // Ancho del menú
-        background-color: $black-color; // Color de fondo negro
-        z-index: 1000; // Asegura que esté por encima
-        border: 2px solid $header-footer-font-default-color; // Borde con el color del header
+      /* Fallback para navegadores que no soportan OKLCH ni Display-P3 */
+      @supports not (color: color(display-p3 0.95 0.95 0.98)) {
+        @supports not (color: oklch(0.6 0.2 90)) {
+          background-color: $header-footer-background-color;
+          color: $header-footer-font-color;
+        }
+      }
 
-        &__item {
-          padding: 10px; // Espaciado interno
-          color: $header-footer-font-default-color; // Color del texto
-          text-decoration: none; // Sin subrayado
-          display: block; // Mostrar como bloque
-          transition: background-color 0.3s ease, color 0.3s ease; // Transición suave
+      /* Elemento logo dentro del header */
+      &__logo {
+        margin-left: 10lvw; /* Separación del logo */
+      }
 
-          // Efecto en hover
-          &:hover {
-            background-color: $header-footer-font-default-color; // Fondo al pasar el mouse
-            color: $black-color; // Color del texto al pasar el mouse
+      /* Elemento imagen dentro del logo */
+      &__logo-image {
+        height: auto;
+        width: 5lvw; /* Tamaño proporcional */
+      }
+
+      /* Elemento para el botón de hamburguesa */
+      &__toggler {
+        border-color: var(--header-text-color); /* Color del borde */
+      }
+
+      /* Elemento para la lista de navegación */
+      &__nav-list {
+        margin-right: 10lvw; /* Separación de los enlaces */
+      }
+
+      /* Modificador para los enlaces de navegación */
+      &__nav-link {
+        /* Usar el soporte de OKLCH si está disponible */
+        @supports (color: oklch(0.6 0.2 90)) {
+          color: $header-footer-font-color-oklch!important;
+          font-weight: 700!important;
+        }
+
+        /* Usar Display-P3 si OKLCH no está disponible, pero Display-P3 sí lo está */
+        @supports (color: color(display-p3 0.95 0.95 0.98)) {
+          @supports not (color: oklch(0.6 0.2 90)) {
+            color: $header-footer-font-color-display-p3!important;
+            font-weight: 700!important;
           }
         }
-      }
 
-      // Estilo para mostrar el menú desplegable
-      &__dropdown.show { display: block; } // Mostrar el menú
-
-      // Ocultar el menú en móviles
-      @media (width <= 768px) { display: none; } // Ocultar en móviles
-    }
-
-    // Sección de búsqueda
-    &__search {
-      @include flex-center; // Aplicar el mixin de flex
-
-      padding-left: 1.2rem; // Espacio a la izquierda
-
-      i {
-        cursor: pointer; // Cambiar cursor al pasar
-        background: $header-footer-font-default-color; // Fondo con el color del header
-        padding: 10px; // Espaciado interno
-        border-radius: 50%; // Forma circular
-        color: $black-color; // Color del ícono
-      }
-
-      // Ocultar en móviles
-      @media (width <= 768px) { display: none; } // Ocultar en móviles
-    }
-
-    // Sección móvil del header
-    &__mobile {
-      display: none; // Ocultos por defecto en pantallas grandes
-
-      @media (width <= 768px) {
-        display: flex; // Mostrar en pantallas pequeñas
-        align-items: center; // Centrar verticalmente
-        position: absolute; // Posicionamiento libre
-        right: 1rem; // Separado del borde derecho
-        top: 0; // En la parte superior
-        padding: 10px; // Espaciado interno
-        background-color: $black-color; // Color de fondo negro
-        color: $header-footer-font-default-color; // Color del texto
-
-        .fas.fa-search {
-          font-size: 24px; // Tamaño del ícono
-          margin-right: 20px; // Espaciado a la derecha
-          cursor: pointer; // Cambiar cursor al pasar
-        }
-
-        &__btn {
-          display: inline-flex; // Mostrar como bloque en línea
-          align-items: center; // Centrar verticalmente
-          background: none; // Sin fondo
-          border: none; // Sin borde
-          font-size: 18px; // Tamaño de la fuente
-          color: $header-footer-font-default-color; // Color del texto
-          cursor: pointer; // Cambiar cursor al pasar
-
-          i {
-            margin-left: 10px; // Separación entre texto e ícono
-            font-size: 24px;
+        /* Fallback para navegadores que no soportan OKLCH ni Display-P3 */
+        @supports not (color: color(display-p3 0.95 0.95 0.98)) {
+          @supports not (color: oklch(0.6 0.2 90)) {
+            color: $header-footer-font-color!important;
+            font-weight: 700!important;
           }
         }
-      }
-    }
 
-    // Panel desplegable para móviles (oculto por defecto)
-    &__mobile__panel {
-      display: none; // Ocultar por defecto
-      position: absolute; // Posicionamiento absoluto
-      top: 100%; // Justo debajo del header
-      right: 0; // Alinear a la derecha
-      width: 100%; // Ancho completo
-      background-color: $header-footer-font-default-color; // Color de fondo
-      z-index: 1000; // Asegura que esté por encima
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      height: 40vh;
-      padding: 20px;
-
-
-      &__item {
-        display: flex; /* Utiliza flexbox para alinear los elementos */
-        justify-content: space-between; /* Espacio entre texto y icono */
-        text-decoration: none;
-        color: $black-color;
-        font-size: 1.5rem; /* Tamaño del texto de los enlaces */
-        margin-bottom: 20px; /* Espaciado inferior */
-        margin-left: 10px;
-        position: relative;
+        margin-left: 1rem; /* Separación entre enlaces */
 
       }
 
-      /* Redes sociales */
-      &__socials {
-        margin-top: 30px;
-
-        i{
-          font-size: 2rem; /* Tamaño de los iconos */
-          color: $black-color;
-          margin: 0 10px; /* Separación entre iconos */
-        }
+       /* Estilo para la barra de navegación */
+      &__navbar-nav {
+        margin-right: 10lvw; /* Separación de los enlaces */
       }
 
-      /* Cambiar idioma */
-      &__languages {
-        margin-top: 20px;
-        font-size: 1.2rem; /* Tamaño del texto */
-        a {
-          text-decoration: none;
-          color: $black-color;
-          margin: 0 10px; /* Separación entre los enlaces de idiomas */
-        }
-
-        a:not(:last-child)::after {
-          content: "|";
-          margin-left: 10px; /* Separación con la línea divisoria */
-          color: $black-color;
-        }
+      /* Estilo para el botón de hamburguesa */
+      &__navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23240656' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
       }
-
-
-
-    }
-
-    // Mostrar el panel desplegable cuando esté activo
-    &__mobile__panel.show { display: block; } // Mostrar el panel
-
-
   }
+
 }

@@ -1,73 +1,32 @@
-<header class="header">
-    <!-- Logo -->
-    <div class="header__logo">
-        <img src="./assets/images/logo_barakaldo.png" alt="Icono oficial de Barakado" class="header__logo--img" />
-    </div>
+<header class="header navbar navbar-expand-lg">
+    <div class="container-fluid">
 
-    <!-- Parte blanca -->
-    <div class="header__top">
-        <div class="header__top__social">
-            <ul class="header__top__social__list">
-                <li><a href="#" class="header__top__social__list__item"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#" class="header__top__social__list__item"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#" class="header__top__social__list__item"><i class="fab fa-instagram"></i></a></li>
-                <li><a href="#" class="header__top__social__list__item"><i class="fab fa-linkedin-in"></i></a></li>
+        <!-- Logo dentro del bloque header -->
+        <a href="../index.html" class="header__logo">
+            <img src="../assets/images/logo.png" alt="Logo" class="header__logo-image">
+        </a>
+
+        <!-- Botón de hamburguesa para dispositivos pequeños -->
+        <button class="navbar-toggler header__toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navegación principal -->
+        <nav class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto header__nav-list">
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link header__nav-link" data-page="index">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../views/speakers.html" class="nav-link header__nav-link" data-page="speakers">Speakers</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../views/aboutus.html" class="nav-link header__nav-link" data-page="aboutus">Acerca de</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../views/contact.html" class="nav-link header__nav-link" data-page="contact">Contacto</a>
+                </li>
             </ul>
-        </div>
-        <div class="header__top__lang">
-            <select class="header__top__lang__select">
-                <option value="es">Español</option>
-                <option value="eu">Euskera</option>
-                <option value="en">English</option>
-                <option value="fr">Français</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="header__bottom">
-        <div class="header__bottom__menu">
-            <button class="header__bottom__menu__btn">Lugares de interés&nbsp;<i class="fas fa-chevron-down"></i></button>
-            <div class="header__bottom__menu__dropdown">
-                <a href="#" class="header__bottom__menu__dropdown__item">Museos</a>
-                <a href="#" class="header__bottom__menu__dropdown__item">Instalaciones deportivas</a>
-                <a href="#" class="header__bottom__menu__dropdown__item">Monumentos</a>
-            </div>
-        </div>
-        <div class="header__bottom__search">
-            <i class="fas fa-search"></i>
-        </div>
-
-        <!-- Menú para dispositivos móviles -->
-        <div class="header__bottom__mobile">
-            <i class="fas fa-search"></i>
-            <button class="header__bottom__mobile__btn">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-
-        <!-- Panel desplegable para móviles -->
-        <div class="header__bottom__mobile__panel">
-            <!-- Secciones -->
-            <a class="header__bottom__mobile__panel__item">Museos&nbsp;<i class="fas fa-chevron-right"></i></a>
-            <a class="header__bottom__mobile__panel__item">Instalaciones deportivas&nbsp;<i class="fas fa-chevron-right"></i></a>
-            <a class="header__bottom__mobile__panel__item">Monumentos&nbsp;<i class="fas fa-chevron-right"></i></a>
-
-            <!-- Redes sociales -->
-            <div class="header__bottom__mobile__panel__socials">
-                <a href="#"></a><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-
-            <!-- Cambiar idioma -->
-            <div class="header__bottom__mobile__panel__languages">
-              <a href="#">ES</a>
-              <a href="#">EU</a>
-              <a href="#">EN</a>
-              <a href="#">FR</a>
-            </div>
-          </div>
-
+        </nav>
     </div>
 </header>

@@ -1,21 +1,47 @@
-<!-- Contenido del pie de la página-->
 <footer class="footer">
-    <!-- Contenedor principal del footer -->
-    <div class="footer__content">
-      <!-- Texto de copyright -->
-      <p class="footer__copyright">© 2024 Alberto Lago Martín.</p>
-      <!-- Lista de enlaces del footer (políticas, términos, contacto) -->
-      <ul class="footer__links">
-        <!-- Enlace a la política de privacidad -->
-        <li class="footer__links__item"><a href="#" class="footer__links__link">Política de privacidad</a></li>
-        <!-- Barra separadora -->
-        <li class="footer__links__item">|</li>
-        <!-- Enlace a los términos y condiciones -->
-        <li class="footer__links__item"><a href="#" class="footer__links__link">Términos y condiciones</a></li>
-        <!-- Barra separadora -->
-        <li class="footer__links__item">|</li>
-        <!-- Enlace a la página de contacto -->
-        <li class="footer__links__item"><a href="#" class="footer__links__link">Contacto</a></li>
-      </ul>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Logo en la parte izquierda -->
+        <div class="col-12 col-md-3 d-flex justify-content-end footer__logo-container">
+          <div class="footer__logo">
+            <img src="../assets/images/logo.png" alt="Logo" class="img-fluid">
+          </div>
+        </div>
+
+        <!-- Navegación en el centro -->
+        <div class="col-12 col-md-6 d-flex justify-content-center">
+          <nav class="footer__nav">
+            <ul class="footer__nav-list d-flex list-unstyled mb-0">
+              <li class="footer__nav-item mx-3">
+                <a href="../index.html" class="footer__nav-link" data-page="index">Inicio</a>
+              </li>
+              <li class="footer__nav-item mx-3">
+                <a href="../views/speakers.html" class="footer__nav-link" data-page="speakers">Speakers</a>
+              </li>
+              <li class="footer__nav-item mx-3">
+                <a href="../views/aboutus.html" class="footer__nav-link" data-page="aboutus">Acerca de</a>
+              </li>
+              <li class="footer__nav-item mx-3">
+                <a href="../views/contact.html" class="footer__nav-link" data-page="contact">Contacto</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Redes sociales a la derecha -->
+        <div class="col-12 col-md-3 d-flex justify-content-start footer__social-container">
+          <div class="footer__social">
+            <a class="footer__social-link mx-2" href="https://facebook.com">
+              <i class="fab fa-facebook fa-2x"></i>
+            </a>
+            <a class="footer__social-link mx-2" href="https://twitter.com">
+              <i class="fab fa-twitter fa-2x"></i>
+            </a>
+            <a class="footer__social-link mx-2" href="https://instagram.com">
+              <i class="fab fa-instagram fa-2x"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-</footer>
+  </footer>

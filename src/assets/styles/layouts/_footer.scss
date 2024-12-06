@@ -1,70 +1,124 @@
+/* Ajustes generales del footer */
 .footer {
-  font-family: $font-family-sans-serif;
-  background-color: $black-color; /* Fondo negro */
-  color: $header-footer-font-default-color; /* Color definido para el texto */
-  width: 100%; /* Ocupa todo el ancho */
-  padding: 20px 0;
-  bottom: 0; left: 0; /* Posición en la parte inferior izquierda */
+  padding: 2rem 0;
 
-  /* Elemento: Contenedor principal del contenido del footer */
-  &__content {
-    max-width: 1200px; /* Ancho máximo para centrar el contenido */
-    margin: 0 auto; /* Centra el contenido */
-    display: flex; /* Elementos en la misma fila */
-    justify-content: space-between; /* Distribuye los elementos a los extremos */
-    align-items: center; /* Alinea verticalmente al centro */
+  /* Usar el soporte de OKLCH si está disponible */
+  @supports (color: oklch(0.6 0.2 90)) {
+    background-color: $header-footer-background-oklch;
+    color: $header-footer-font-color-oklch;
+  }
 
-    /* Para pantallas pequeñas, apilar los elementos en dos filas */
-    @media (width <= 768px) {
-      flex-direction: column; /* Apilar verticalmente */
-      text-align: center; /* Centrar el texto */
+  /* Usar Display-P3 si OKLCH no está disponible, pero Display-P3 sí lo está */
+  @supports (color: color(display-p3 0.95 0.95 0.98)) {
+    @supports not (color: oklch(0.6 0.2 90)) {
+      background-color: $header-footer-background-display-p3;
+      color: $header-footer-font-color-display-p3;
     }
   }
 
-  /* Elemento: Texto del copyright */
-  &__copyright { margin: 0; /* Elimina márgenes */
-
-    /* Para pantallas pequeñas, apilar este elemento primero */
-    @media (width <= 768px) { margin-bottom: 10px; } /* Añadir un espacio debajo del copyright */
+  /* Fallback para navegadores que no soportan OKLCH ni Display-P3 */
+  @supports not (color: color(display-p3 0.95 0.95 0.98)) {
+    @supports not (color: oklch(0.6 0.2 90)) {
+      background-color: $header-footer-background-color;
+      color: $header-footer-font-color;
+    }
   }
 
-  /* Elemento: Lista de enlaces del footer */
-  &__links {
-    list-style: none; /* Elimina los puntos de la lista */
-    margin: 0; padding: 0; /* Elimina márgenes y padding */
-    display: flex; /* Los elementos de la lista siempre estarán en fila */
-    flex-direction: row; /* Mantener alineación horizontal en todos los tamaños de pantalla */
+  &__logo img {
+    height: auto;    /* Mantener la proporción */
+    max-width: 5vw; /* Tamaño máximo del logo */
+  }
 
-    /* Elemento: Item individual dentro de la lista */
-    &__item {
-      display: inline; /* Para que los items se dispongan en una línea */
-      margin-right: 15px; /* Espaciado entre los items */
+  /* Redes sociales */
+  &__social {
+    display: flex;
+    justify-content: flex-end;
 
-      &:last-child {
-        margin-right: 0; /* Sin margen a la derecha para el último item */
-      }
+  }
 
-      /* Para pantallas pequeñas, eliminar el margen izquierdo */
-      @media (width <= 768px) { margin-left: 0; }
+  &__social-link {
+    max-width: 5vw; /* Tamaño máximo de los iconos sociales */
+    text-decoration: none; /* Quitar subrayado en los enlaces */
 
-
+    /* Usar el soporte de OKLCH si está disponible */
+    @supports (color: oklch(0.6 0.2 90)) {
+      color: $header-footer-font-color-oklch;
     }
 
-    /* Elemento: Enlace dentro del item de la lista */
-    &__link {
-      text-decoration: none; /* Elimina el subrayado de los enlaces */
-      color: $header-footer-font-default-color; /* Color por defecto para los enlaces */
-
-      &:not(:last-child)::after {
-        content: "|"; /* Añade un separador */
-        margin-left: 10px; /* Separación con la línea divisoria */
-        color: $header-footer-font-default-color; /* Color del separador */
+    /* Usar Display-P3 si OKLCH no está disponible, pero Display-P3 sí lo está */
+    @supports (color: color(display-p3 0.95 0.95 0.98)) {
+      @supports not (color: oklch(0.6 0.2 90)) {
+        color: $header-footer-font-color-display-p3;
       }
+    }
 
-      &:hover {
-        color: $header-footer-font-default-color; /* Mantiene el color en hover */
-        text-decoration: none; /* Sin subrayado en hover */
+    /* Fallback para navegadores que no soportan OKLCH ni Display-P3 */
+    @supports not (color: color(display-p3 0.95 0.95 0.98)) {
+      @supports not (color: oklch(0.6 0.2 90)) {
+        color: $header-footer-font-color;
       }
     }
   }
+
+  &__nav-list {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  &__nav-item a {
+    font-weight: 700;
+    text-decoration: none; /* Quitar subrayado en los enlaces */
+
+    /* Usar el soporte de OKLCH si está disponible */
+    @supports (color: oklch(0.6 0.2 90)) {
+      color: $header-footer-font-color-oklch;
+    }
+
+    /* Usar Display-P3 si OKLCH no está disponible, pero Display-P3 sí lo está */
+    @supports (color: color(display-p3 0.95 0.95 0.98)) {
+      @supports not (color: oklch(0.6 0.2 90)) {
+        color: $header-footer-font-color-display-p3;
+      }
+    }
+
+    /* Fallback para navegadores que no soportan OKLCH ni Display-P3 */
+    @supports not (color: color(display-p3 0.95 0.95 0.98)) {
+      @supports not (color: oklch(0.6 0.2 90)) {
+        color: $header-footer-font-color;
+      }
+    }
+  }
+
+  /* Media query para pantallas pequeñas */
+
+/* Responsividad para pantallas pequeñas */
+@media (width <= 1024px) {
+  /* Hacer que los íconos y la navegación se apilen en pantallas más pequeñas */
+  &__logo,
+  &__nav,
+  &__social {
+    margin-bottom: 1rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Centrar los elementos dentro de las columnas */
+  &__logo,
+  &__social,
+  &__nav-list {
+    justify-content: center; /* Centrar contenido dentro de la columna */
+  }
+
+  &__nav-list {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__social-link {
+    margin: 0 0.5rem;
+    max-width: 5vw;
+  }
+}
+
 }

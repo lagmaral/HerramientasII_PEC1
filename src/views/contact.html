@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Configuración básica del documento -->
+    <meta charset="utf-8"> <!-- Define el conjunto de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Para que la página sea responsiva -->
+    <title>Noamatech Convention - Contacto</title> <!-- Título de la página -->
+
+    <!-- Enlace a archivo principal de estilos (SCSS compilado) -->
+    <link rel="stylesheet" type="text/css" href="../assets/styles/main.scss"><!-- do not remove this line! -->
+
+    <!-- Enlace a la hoja de estilos de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <include src="./views/header.html"></include>
+    <!-- Este bloque incluye la cabecera desde un archivo externo -->
+
+    <main class="contact-container mt-4">
+
+        <!-- Formulario de Contacto -->
+        <section class="mb-5 contact-container__section contact-container__section-contact">
+            <h2 class="mb-3 contact-container__section-title">Contáctanos</h2>
+            <form name="contact" method="POST" netlify class="row g-3 contact-container__form">
+
+                <!-- Campo para el nombre -->
+                <div class="col-md-6">
+                    <label for="nombre" class="form-label contact-container__form-label">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" required>
+                </div>
+
+                <!-- Campo para el correo electrónico -->
+                <div class="col-md-6">
+                    <label for="email" class="form-label contact-container__form-label">Correo electrónico</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+
+                <!-- Campo para el teléfono -->
+                <div class="col-12">
+                    <label for="telefono" class="form-label contact-container__form-label">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" class="form-control" required>
+                </div>
+
+                <!-- Selector desplegable de especialidad -->
+                <div class="col-12">
+                    <button class="btn btn-primary dropdown-toggle contact-container__form-dropdown-selector" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Selecciona una especialidad
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" data-value="ciber">Ciberseguridad</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="cripto">Criptografía</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="lopd">LOPD</a></li>
+                    </ul>
+                    <input type="hidden" name="selectedEspecialidad" class="contact-container__form-dropdown-selected-value">
+                </div>
+
+                <!-- Sección con opciones de interés (checkboxes) -->
+                <div class="col-12">
+                    <fieldset>
+                        <legend class="form-label contact-container__fieldset-title">¿En qué estás interesado?</legend>
+                        <div class="form-check">
+                            <input type="checkbox" id="servicio1" name="servicios" value="Desarrollo de Software" class="form-check-input">
+                            <label for="servicio1" class="form-check-label contact-container__fieldset-check-label">Desarrollo de Software</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="servicio2" name="servicios" value="Soporte Técnico" class="form-check-input">
+                            <label for="servicio2" class="form-check-label contact-container__fieldset-check-label">Soporte Técnico</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="servicio3" name="servicios" value="Consultoría IT" class="form-check-input">
+                            <label for="servicio3" class="form-check-label contact-container__fieldset-check-label">Consultoría IT</label>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <!-- Botón para enviar el formulario -->
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Galería de Imágenes (Carrusel) -->
+        <section class="mb-5 contact-container__section contact-container__section-gallery">
+            <h2 class="mb-3 contact-container__section-title">Galería de Imágenes</h2>
+            <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+
+                <!-- Indicadores del carrusel -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+
+                <!-- Contenido del carrusel -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="../assets/images/galeria01.jpg" class="d-block w-100 img-fluid rounded shadow" alt="Imagen de galeria 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../assets/images/galeria02.jpg" class="d-block w-100 img-fluid rounded shadow" alt="Imagen de galeria 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../assets/images/galeria03.jpg" class="d-block w-100 img-fluid rounded shadow" alt="Imagen de galeria 3">
+                    </div>
+                </div>
+
+                <!-- Controles del carrusel -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Video destacado -->
+        <section class="mb-5 contact-container__section contact-container__section-video">
+            <h2 class="mb-3 contact-container__section-title">Video Destacado</h2>
+            <div class="ratio ratio-16x9">
+                <iframe src="https://www.youtube.com/embed/Ewd7Shh2zaI" title="Enlace a video de Youtube" allowfullscreen></iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <include src="./views/footer.html"></include>
+    <!-- Este bloque incluye el pie de página desde un archivo externo -->
+
+    <!-- Script principal (archivo JS) -->
+    <script type="module" src="../assets/scripts/main.js"></script><!-- do not remove this line! -->
+    <!-- Scripts de Bootstrap (requiere Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

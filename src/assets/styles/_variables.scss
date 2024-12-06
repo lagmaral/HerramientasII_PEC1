@@ -1,18 +1,23 @@
 @use "sass:color";
 
+
 $font-family-sans-serif: -apple-system, blinkmacsystemfont, "Segoe UI", roboto,
   "Helvetica Neue", arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
   "Segoe UI Symbol";
+$font-family-secundary: "Lora", serif;
 $font-family-serif: "Georgia", "Times New Roman", serif;
-$mq-min-width: 420px;
-
-/* Variables para colores y medidas */
-$barakaldo-yellow: #F7D24A; /* Color amarillo de Barakaldo CF */
-$header-footer-font-default-color: #FFF; /* Color blanco */
-$black-color: #000; /* Color negro */
-$black-color-contraste: #333; /* Color negro */
-$gray-color: #999; /* Color gris */
-$padding-default: 10px 170px; /* Espaciado lateral por defecto */
-$logo-height-desktop: 100px; /* Altura del logo en escritorio */
-$logo-height-mobile: 50px; /* Altura del logo en móviles */
-
+$header-footer-text-color: #333; /* Lavanda OKLCH */
+$header-footer-background-color: #ac7ef7; /* Original en hexadecimal */
+$header-footer-font-color: #240656;      /* Original en hexadecimal */
+$header-footer-text-display-p3: color(display-p3 0.674 0.494 0.969); /* Lavanda Display-P3 */
+$header-footer-background-display-p3: color(display-p3 0.674 0.494 0.969); /* Lavanda Display-P3 */
+$header-footer-font-color-display-p3: color(display-p3 0.0824 0.0235 0.3373);      /* Morado oscuro Display-P3 */
+$header-footer-text-oklch: oklch(76.8% 0.354 243deg / 100%); /* Lavanda OKLCH */
+$header-footer-background-oklch: oklch(76.8% 0.354 243deg / 100%); /* Lavanda OKLCH */
+$header-footer-font-color-oklch: oklch(16.7% 0.16 292.2deg);      /* Morado oscuro OKLCH */
+$header-footer-over-font-color: #ac7ef7;
+$header-font-color: #ac7ef7;
+$footer-font-color: #ac7ef7;
+$white-color: #fff;
+$border-color: #ddd;
+$highlightned-background-color: #f0f8ff;

@@ -1,99 +1,86 @@
 <!DOCTYPE html>
-<html lang="es">
+<!-- Define el tipo de documento como HTML5 -->
+<html>
   <head>
+    <!-- Configuración del conjunto de caracteres para soporte de texto en múltiples idiomas -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="./assets/styles/main.scss"> <!-- do not remove this line! -->
-    <title>Descubre Barakaldo</title>
+    <!-- Configuración para que el sitio sea responsive y se ajuste al ancho del dispositivo -->
+    <meta name="viewport" content="width=device-width">
+    <!-- Enlace al archivo principal de estilos (en formato SCSS compilado) -->
+    <link rel="stylesheet" type="text/css" href="./assets/styles/main.scss"><!-- do not remove this line! -->
+    <title>Noamatech convention</title> <!-- Título de la página -->
   </head>
   <body>
-    <!-- Cabecera -->
-    <include src="./views/header.html"></include>
 
-    <!-- Contenedor Principal -->
-    <div class="container">
-      <!-- Imagen Principal -->
-      <img src="./assets/images/barakaldo_home.jpg" alt="Imagen del ayuntamiento de Barakaldo" class="container__image" />
-
-      <!-- Secciones -->
-      <div class="container__sections">
-        <!-- Menú de la izquierda -->
-        <div class="container__sections__left">
-          <ul class="container__sections__left__menu">
-            <li><a class="container__sections__left__menu__link active" href="#" data-target=".element1">Bilbao Exhibition Center</a></li>
-            <li><a class="container__sections__left__menu__link" href="#" data-target=".element2">Museo Mercedes</a></li>
-            <li><a class="container__sections__left__menu__link" href="#" data-target=".element3">Ermita de Santa Agueda</a></li>
-            <li><a class="container__sections__left__menu__link" href="#" data-target=".element4">Jardín Botánico</a></li>
-          </ul>
+    <header class="index-header">
+        <!-- Sección del logotipo en el encabezado -->
+        <div class="index-header__logo">
+            <img src="./assets/images/logo.png" alt="Logo" />
         </div>
+        <!-- Navegación principal -->
+        <nav class="index-header__nav">
+            <ul class="index-header__nav-list">
+                <!-- Elementos del menú de navegación -->
+                <li class="index-header__nav-item">
+                    <a href="./views/speakers.html" class="index-header__nav-link" data-page="speakers">Speakers</a>
+                </li>
+                <li class="index-header__nav-item">
+                    <a href="./views/aboutus.html" class="index-header__nav-link" data-page="aboutus">Acerca de</a>
+                </li>
+                <li class="index-header__nav-item">
+                    <a href="./views/contact.html" class="index-header__nav-link" data-page="info">Contacto</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-        <!-- Contenido de la derecha -->
-        <div class="container__sections__right">
-          <!-- Sección 1: Bilbao Exhibition Center -->
-          <div class="container__sections__right__element.active element1">
-            <h1 class="container__sections__right__element__title"><i class="fas fa-building"></i>&nbsp; Bilbao Exhibition Centre</h1>
-            <img src="./assets/images/bec.jpg" alt="Imagen del Bilbao Exhibition Center" class="container__image" />
-            <p class="container__sections__right__element__paragraph">
-                BILBAO EXHIBITION CENTRE se encuentra entre los recintos feriales más modernos del mundo por su diseño y equipamiento.
-                <br>
-                Sus instalaciones incorporan elementos constructivos muy innovadores, que permiten ofrecer la mejor atención a todos sus usuarios, haciendo más cómoda y confortable la participación en las distintas convocatorias que conforman su calendario.
-                <br>
-                Sin barreras ni obstáculos y con una altura media de 18 metros, BEC dispone de una superficie expositiva de 150.000 metros cuadrados, distribuida en 6 pabellones sin columnas que facilitan el montaje y desmontaje de stands.
-                <br>
-                Además, cuenta con otros espacios destacados, como el pabellón multiusos BIZKAIA ARENA, con capacidad para 20.000 personas, y el centro de congresos BEC CONVENCIONES, de 18.000 metros cuadrados, además de un aparcamiento para 4000 vehículos.
-              </p>
-            <!-- Botón "Leer más" para móviles -->
-            <a href="#" class="container__sections__right__element__toggle-text">Leer más</a>
-          </div>
-
-          <!-- Sección 2: Museo Mercedes -->
-          <div class="container__sections__right__element element2">
-            <h1 class="container__sections__right__element__title"><i class="fas fa-landmark"></i>&nbsp; Museo Mercedes</h1>
-            <img src="./assets/images/mercedes.jpg" alt="Imagen del Museo Mercedes" class="container__image" />
-            <p class="container__sections__right__element__paragraph">
-                El Museo Aguinaga de Barakaldo es el escenario perfecto para perderse en la historia de Mercedes-Benz y encontrar desde el modelo más antiguo de 1926 hasta los de los años 80. Un templo automovilístico con más de 2.000 m² divididos en tres apartados: la zona de exposición, el taller y el salón de actos.
-                <br>
-                Un museo para los amantes del motor, donde se podrá conocer todos los secretos de estos clásicos alemanes desde las entrañas, mostrando la historia y la evolución de Mercedes-Benz a través de los vehículos que encontramos a lo largo de su recorrido.
-                <br>
-                El museo, mimado hasta el último detalle, nos da la posibilidad de respirar los valores de una de las marcas más importantes de la automoción mundial.
-                <br>
-                Además cuentan con espacio para albergar reuniones, talleres y eventos y un taller para reparar vehículos clásicos de la mano de mecánicos especialistas.
-            </p>
-            <a href="#" class="container__sections__right__element__toggle-text">Leer más</a>
-          </div>
-
-          <!-- Sección 3: Ermita de Santa Agueda -->
-          <div class="container__sections__right__element element3">
-            <h1 class="container__sections__right__element__title"><i class="fas fa-landmark"></i>&nbsp; Ermita de Santa Agueda</h1>
-            <img src="./assets/images/santa_agueda.jpg" alt="Imagen de la Ermita de Santa Agueda" class="container__image" />
-            <p class="container__sections__right__element__paragraph">
-                La ermita de Santa Agueda, una de las mayores de Bizkaia, se sitúa en un alto, en las estribaciones del monte Arrolatza. Conduce a ella un empinado camino que parte desde el conocido puente del Diablo, sobre el río Cadagua, y pasa cerca de los restos de una antigua calzada.
-                <br>
-                La devoción a Santa Agueda en este barrio es muy antigua. Sabemos que la actual ermita se construyó en 1584, pero ocupó el lugar de otra anterior. El templo ha sido remodelado a lo largo de los siglos, añadiéndosele en el siglo XVIII las bóvedas, la sacristía y la espadaña. En el siglo XX, además, ha sido restaurada en 1959 y en 1996.
-                <br>
-                La ermita es una construcción de mampostería, con un pórtico en madera que cobija su acceso, en arco de medio punto. Al interior se ordena en cuatro tramos más la cabecera, más estrecha. Se cubre con una bóveda de lunetos que apoyan en pilastras, salvo la zona del altar, con bóveda de crucería. Sobre el arco triunfal del presbiterio puede leerse el primer verso del himno a la santa: Aintzaldu daigun Agate Deuna, glorifiquemos a Santa Agueda.  Las ventanas de la ermita se cierran con vidrieras elaboradas por la empresa Vidrieras de Arte. Representan a Santiago Peregrino, la Virgen de Begoña y San Ignacio de Loyola. En el muro de los pies, sobre el coro contemporáneo, un mural del siglo XX recuerda a los coros de Santa Agueda.
-            </p>
-            <a href="#" class="container__sections__right__element__toggle-text">Leer más</a>
-          </div>
-
-          <!-- Sección 4: Jardín Botánico -->
-          <div class="container__sections__right__element element4">
-            <h1 class="container__sections__right__element__title"><i class="fas fa-tree"></i>&nbsp; Jardín Botánico</h1>
-            <img src="./assets/images/jardin_botanico.jpg" alt="Imagen del Jardín Botánico" class="container__image" />
-            <p class="container__sections__right__element__paragraph">
-                El Jardín Botánico Ramón Rubial de Barakaldo, diseñado por el arquitecto Ángel de Diego Rica e inaugurado en el año 2002, es un museo vivo donde la vegetación se convierte en arte.
-                <br>
-                Se localiza dentro del casco urbano del municipio, con varias puertas de acceso; la principal puerta del Jardín Blanco en la calle La Torre.  Cuenta con una extensión de unos 60.000 m2, en la podemos contemplar más de 300 especies leñosas diferentes y una gran diversidad de plantas herbáceas; todas ellas ordenadas en distintas zonas que esconden multitud de secretos y curiosidades.
-                <br>
-                Situado en una atalaya con vistas de los montes de Triano, dentro del casco urbano de Barakaldo, además de especies autóctonas, en el Jardín podemos contemplar plantas procedentes de distintas partes del mundo, como: el papiro, varios ejemplares de pinsapo, un árbol de júpiter blanco, magnolios de hoja caduca, un falso pimentero, varias falsa acacias rosas, castaños de indias rojos, azufaifos, un ceibo, etc….
-            </p>
-            <a href="#" class="container__sections__right__element__toggle-text">Leer más</a>
-          </div>
+    <main class="container">
+        <!-- Logotipo o imagen representativa del evento -->
+        <div class="container__logo">
+          <img src="./assets/images/defensa.png" alt="Image del logo de seguridad">
         </div>
-      </div>
-    </div>
-    <!-- Footer -->
-    <include src="./views/footer.html"></include>
-    <script type="module" src="./assets/scripts/main.js"></script> <!-- do not remove this line! -->
+        <!-- Texto descriptivo del evento -->
+        <div class="container__contenido">
+          <h1 class="container__titulo">Congreso de Seguridad Informática</h1>
+          <h2 class="container__subtitulo">Noviembre de 2024</h2>
+        </div>
+    </main>
+
+    <footer class="index-footer">
+        <!-- Logotipo en el pie de página -->
+        <div class="index-footer__logo">
+            <img src="./assets/images/logo.png" alt="Logo">
+        </div>
+        <!-- Navegación secundaria en el pie de página -->
+        <nav class="index-footer__nav">
+            <ul class="index-footer__nav-list">
+                <!-- Elementos del menú de navegación en el pie de página -->
+                <li class="index-footer__nav-item">
+                    <a href="./views/speakers.html" class="index-footer__nav-link" data-page="speakers">Speakers</a>
+                </li>
+                <li class="index-footer__nav-item">
+                    <a href="./views/aboutus.html" class="index-footer__nav-link" data-page="aboutus">Acerca de</a>
+                </li>
+                <li class="index-footer__nav-item">
+                    <a href="./views/contact.html" class="index-footer__nav-link" data-page="info">Contacto</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- Íconos y enlaces a redes sociales -->
+        <div class="index-footer__social">
+            <a class="index-footer__social-link" href="https://facebook.com">
+                <i class="fab fa-facebook fa-2x"></i> <!-- Ícono de Facebook -->
+            </a>
+            <a class="index-footer__social-link" href="https://twitter.com">
+                <i class="fab fa-twitter fa-2x"></i> <!-- Ícono de Twitter -->
+            </a>
+            <a class="index-footer__social-link" href="https://instagram.com">
+                <i class="fab fa-instagram fa-2x"></i> <!-- Ícono de Instagram -->
+            </a>
+        </div>
+    </footer>
+
+    <!-- Enlace al archivo principal de scripts en formato ES Modules -->
+    <script type="module" src="./assets/scripts/main.js"></script><!-- do not remove this line! -->
   </body>
 </html>

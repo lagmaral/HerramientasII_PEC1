@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <!-- Configuración básica del documento -->
+    <meta charset="utf-8"> <!-- Define el conjunto de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width"> <!-- Hace que el diseño sea responsive -->
+    <!-- Enlace al archivo principal de estilos (SCSS compilado) -->
+    <link rel="stylesheet" type="text/css" href="../assets/styles/main.scss"><!-- do not remove this line! -->
+    <title>Noamatech convention - Sobre Nosotros</title> <!-- Título de la página -->
+  </head>
+  <body>
+
+    <include src="./views/header.html"></include>
+    <!-- Este bloque incluye la cabecera desde un archivo externo para mantener la consistencia entre las páginas -->
+
+    <main class="about-container">
+
+        <!-- Primer sección con cita y foto -->
+        <section class="about-container__section-first">
+            <!-- Imagen del ponente principal -->
+            <img src="../assets/images/ponente.png" class="about-container__section-first-image" alt="Ponente principal del congreso">
+            <!-- Contenedor con cita del ponente y autor -->
+            <div class="about-container__section-first-title">
+                <p class="about-container__section-first-title-phrase">
+                    "La ciberseguridad no es solo una herramienta técnica, sino un compromiso con un futuro digital más seguro."
+                </p>
+                <p class="about-container__section-first-title-author">By Satoshi</p>
+            </div>
+        </section>
+
+        <!-- Segunda sección con cita de prevención y texto de introducción -->
+        <section class="my-5 about-container__section-second">
+            <!-- Cita sobre la importancia de la prevención en ciberseguridad -->
+            <blockquote class="about-container__section-second-quote">
+                “La prevención siempre será más económica que la recuperación de un ataque cibernético.”
+            </blockquote>
+
+            <!-- Texto explicativo sobre la ciberseguridad y su importancia -->
+            <div class="about-container__section-second-content">
+                La ciberseguridad es un pilar fundamental en la era digital, protegiendo los datos sensibles frente a amenazas cada vez más sofisticadas.
+                La prevención siempre será más económica que la recuperación de un ataque cibernético. Con el aumento del teletrabajo, la protección de redes y sistemas se ha vuelto una prioridad ineludible. Este congreso ofrece un espacio para aprender sobre las últimas tendencias en defensa cibernética y explorar estrategias que garanticen la resiliencia digital en cualquier entorno.
+            </div>
+        </section>
+
+        <!-- Tercera sección con lista de temas a tratar -->
+        <section class="my-5 about-container__section-third">
+            <ol class="about-container__section-third__list">
+                <!-- Primer tema: Phishing y ciberamenazas -->
+                <li class="about-container__section-third__list-item">
+                    <h3 class="about-container__section-third__list-item-title">Phishing y Ciberamenazas</h3>
+                    <p class="about-container__section-third__list-item-text">
+                        El phishing sigue siendo una de las amenazas más peligrosas en el mundo digital. Consiste en el uso de correos electrónicos falsificados que parecen provenir de fuentes confiables, con el objetivo de engañar a los usuarios para que revelen información personal sensible. En este congreso, expertos compartirán las últimas tendencias en ataques de phishing y cómo protegerse contra ellos. Los participantes aprenderán a identificar señales de phishing, estrategias para mitigar los riesgos y las mejores prácticas para mantener la seguridad en línea.
+                    </p>
+                </li>
+                <!-- Segundo tema: Hacking ético y pruebas de penetración -->
+                <li class="about-container__section-third__list-item">
+                    <h3 class="about-container__section-third__list-item-title">Hacking Ético y Pruebas de Penetración</h3>
+                    <p class="about-container__section-third__list-item-text">
+                        El hacking ético, también conocido como pruebas de penetración o "pentesting", es una técnica utilizada por los expertos en seguridad para evaluar la vulnerabilidad de los sistemas informáticos. A través de simulaciones de ataques cibernéticos, los profesionales de la seguridad pueden identificar y corregir debilidades antes de que los ciberdelincuentes las exploten. En esta sección, se ofrecerán talleres prácticos sobre cómo realizar auditorías de seguridad, técnicas de penetración y cómo utilizar herramientas avanzadas de hacking ético para proteger infraestructuras críticas.
+                    </p>
+                </li>
+                <!-- Tercer tema: Política de privacidad y cumplimiento legal -->
+                <li class="about-container__section-third__list-item">
+                    <h3 class="about-container__section-third__list-item-title">Política de Privacidad y Cumplimiento Legal</h3>
+                    <p class="about-container__section-third__list-item-text">
+                        La privacidad de los datos y el cumplimiento de normativas como el GDPR (Reglamento General de Protección de Datos) son esenciales para las organizaciones que manejan información sensible. A medida que aumentan las amenazas cibernéticas, las empresas deben asegurarse de que están cumpliendo con las leyes de privacidad y protegiendo los datos de sus usuarios. Este segmento del congreso se centrará en las mejores prácticas para la gestión de la privacidad en el entorno digital, el cumplimiento de normativas internacionales y cómo implementar políticas de privacidad sólidas para proteger la información personal en línea.
+                    </p>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Cuarta sección con otra cita y contenido explicativo -->
+        <section class="my-5 about-container__section-forth">
+            <!-- Cita sobre amenazas internas -->
+            <blockquote class="about-container__section-forth-quote">
+                “Las amenazas no solo provienen de actores externos, como hackers o grupos organizados, sino también de vulnerabilidades internas y errores humanos.”
+            </blockquote>
+
+            <!-- Contenido explicativo sobre la importancia de protegerse de amenazas internas -->
+            <div class="about-container__section-forth-content">
+                En un mundo donde la digitalización avanza a pasos agigantados, las organizaciones enfrentan una creciente presión para proteger sus activos digitales. Las amenazas no solo provienen de actores externos, como hackers o grupos organizados, sino también de vulnerabilidades internas y errores humanos. Adoptar una estrategia integral de ciberseguridad, que combine tecnologías avanzadas como la inteligencia artificial con una cultura organizacional de seguridad, es crucial para mitigar riesgos y garantizar operaciones continuas frente a cualquier incidente.
+            </div>
+        </section>
+
+        <!-- Quinta sección con imagen sobre ciberseguridad -->
+        <section class="my-5 about-container__section-fifth">
+            <img src="../assets/images/about_detalle.webp" alt="Imagen sobre ciberseguridad" class="img-fluid w-80">
+        </section>
+
+        <!-- Sexta sección con texto adicional y conclusión -->
+        <section class="my-5 about-container__section-sixth">
+            <p>
+                Además, trataremos temas de vanguardia como la aplicación de IA en ciberseguridad y la implementación efectiva de la normativa GDPR (General Data Protection Regulation).
+            </p>
+            <p>
+                <strong>Conclusión:</strong> La ciberseguridad es mucho más que un desafío técnico; es una prioridad global que demanda colaboración entre empresas, gobiernos y ciudadanos. En un entorno digital en constante evolución, la inversión en prevención y capacitación es esencial para enfrentar las amenazas actuales y garantizar un futuro seguro. La resiliencia cibernética no solo protege datos y sistemas, sino también la confianza que sustenta nuestra sociedad digital.
+            </p>
+        </section>
+
+    </main>
+
+    <include src="./views/footer.html"></include>
+    <!-- Este bloque incluye el pie de página desde un archivo externo -->
+
+    <!-- Archivo principal de scripts en formato ES Module -->
+    <script type="module" src="../assets/scripts/main.js"></script><!-- do not remove this line! -->
+  </body>
+</html>

@@ -1,129 +1,318 @@
-/* Establece box-sizing para todos los elementos para incluir bordes y padding en las dimensiones */
-* {  box-sizing: border-box; /* Incluye padding y bordes en el tamaño total de los elementos */}
+/* Estilos para el header */
+.index-header {
+  /* Propiedades de disposición y estilo general */
+  align-items: center;               /* Centra verticalmente el contenido */
+  box-sizing: border-box;            /* Incluye padding en el tamaño total */
+  display: flex;                     /* Flexbox para disposición básica */
+  font-family: $font-family-sans-serif; /* Fuente del texto */
+  height: 7.5lvh;                     /* Altura del header */
+  justify-content: space-between;    /* Espaciado entre logo y navegación */
+  padding: 1rem 10lvw;               /* Espaciado lateral */
 
-/* Elimina los márgenes predeterminados del cuerpo */
-body {margin: 0; /* Establece márgenes en 0 para evitar espacios innecesarios */}
-
-/* Estilos generales para el contenedor principal */
-.container {
-  display: block; /* Establece que el contenedor sea un elemento de bloque */
-  width: 100%; /* El contenedor ocupa el ancho completo de la pantalla */
-
-  /* Estilos para la imagen dentro del contenedor */
-  &__image {
-    width: 100%; /* La imagen ocupa el 100% del ancho del contenedor */
-    max-height: 400px; /* Altura máxima de la imagen */
-    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin distorsionarse */
-    position: relative; /* Posiciona la imagen de forma relativa para los elementos hijos */
-    top: 0; /* Alinea la imagen en la parte superior */
-    z-index: 0; /* Asegura que la imagen esté detrás de otros elementos */
+  /* Usar el soporte de OKLCH si está disponible */
+  @supports (color: oklch(0.6 0.2 90)) {
+    background-color: $header-footer-background-oklch;
+    color: $header-footer-font-color-oklch;
   }
 
-  /* Sección principal que contiene dos columnas: izquierda y derecha */
-  &__sections {
-    display: grid; /* Utiliza un sistema de grid para la disposición de columnas */
-    grid-template-columns: 1fr 3fr; /* Dos columnas: 1/4 para la izquierda y 3/4 para la derecha */
-    width: 100%;
-    max-width: 1200px; /* Ancho máximo del contenedor */
-    margin: 0 auto; /* Centra el contenido horizontalmente */
-    padding: 1.2rem; /* Espaciado interno del contenedor */
-    gap: 10px; /* Espaciado entre columnas */
+  /* Usar Display-P3 si OKLCH no está disponible, pero Display-P3 sí lo está */
+  @supports (color: color(display-p3 0.95 0.95 0.98)) {
+    @supports not (color: oklch(0.6 0.2 90)) {
+      background-color: $header-footer-background-display-p3;
+      color: $header-footer-font-color-display-p3;
+    }
+  }
 
-     /* Cambia la disposición a una sola columna en móviles */
-     @media (width <= 768px) { grid-template-columns: 1fr; /* Cambia a una columna única */ }
+  /* Fallback para navegadores que no soportan OKLCH ni Display-P3 */
+  @supports not (color: color(display-p3 0.95 0.95 0.98)) {
+    @supports not (color: oklch(0.6 0.2 90)) {
+      background-color: $header-footer-background-color;
+      color: $header-footer-font-color;
+    }
+  }
 
-    /* Menú de la sección izquierda */
-    &__left {
-      padding: 10px; /* Espaciado interno del menú */
-      cursor: pointer; /* Cambia el cursor a puntero al pasar sobre el menú */
+  &__logo {
+    img {
+      height: auto;                  /* Mantiene la proporción de la imagen */
+      width: 5lvw;                   /* Define un ancho relativo */
+    }
+  }
 
-      @media (width <= 768px) {width: 100%; /* Asegura que ocupe todo el ancho disponible */}
 
-      /* Lista dentro del menú */
-      &__menu {
-        list-style-type: none; /* Quita los marcadores de lista */
-        padding: 0; /* Elimina el padding de la lista */
-        margin: 0; /* Elimina márgenes de la lista */
-        background-color: $black-color; /* Usa la variable de color negro para el fondo */
 
-        /* Elementos de la lista del menú alineados al centro */
-        li {text-align: center; /* Alinea el texto de los elementos de la lista al centro */}
+  &__nav-hidden{
+    display: none;
+  }
 
-        /* Enlaces dentro del menú */
-        &__link {
-          text-decoration: none; /* Elimina el subrayado de los enlaces */
-          color: $header-footer-font-default-color; /* Color definido para el texto de los enlaces */
-          display: block; /* Hace que el enlace ocupe todo el espacio disponible */
-          padding: 10px; /* Espaciado interno del enlace */
-          transition: background-color 0.3s; /* Transición suave al cambiar el color de fondo */
+  &__nav-list {
+    display: flex;                   /* Flexbox para la lista de navegación */
+    list-style: none;                /* Quita los marcadores de la lista */
+    margin: 0;
+    padding: 0;
+  }
 
-          /* Estilos para el enlace activo */
-          &.active {
-            background-color: $black-color-contraste; /* Color de fondo para el enlace activo */
-            box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
-            padding-left: 5px; /* Espacio a la izquierda */
-            border-left: 5px solid $barakaldo-yellow; /* Línea amarilla a la izquierda */
-            font-weight: bold; /* Negrita para el enlace activo */
-          }
+  &__nav-item {
+    font-weight: 700;               /* Texto en negrita */
+    margin-left: 1lvw;               /* Espaciado entre elementos */
 
-          /* Estilos para el enlace al pasar el ratón */
-          &:hover {
-            background-color: $black-color-contraste; /* Color de fondo al pasar el ratón */
-            box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
-            padding-left: 5px; /* Espacio a la izquierda */
-            border-left: 5px solid $barakaldo-yellow; /* Línea amarilla a la izquierda */
-            font-weight: bold; /* Negrita al pasar el ratón */
-          }
-        }
+    &:first-child {
+      margin-left: 0;                /* El primer elemento no tiene margen a la izquierda */
+    }
+  }
+
+  &__nav-link {
+    color: $header-footer-font-color; /* Color del enlace */
+    padding: 0.5rem;                  /* Espaciado dentro del enlace */
+    text-decoration: none;            /* Quita subrayado */
+
+  }
+}
+
+/* Soporte para Grid */
+@supports (display: grid) {
+  .index-header {
+    display: grid;                   /* Cambia de Flex a Grid */
+    grid-template-columns: auto 1fr; /* Define dos columnas en el grid */
+    height: 10lvh;                   /* Aumenta la altura en grid */
+
+    &__logo {
+      align-self: center;            /* Centra verticalmente el logo */
+      grid-column: 1;                /* Coloca el logo en la primera columna */
+    }
+
+    &__nav {
+      grid-column: 2;                /* Navegación en la segunda columna */
+      justify-self: end;             /* Alinea navegación a la derecha */
+    }
+  }
+}
+
+/* Media Query para pantallas pequeñas */
+@media (width <= 768px) {
+  .index-header {
+    flex-direction: column;          /* Cambia disposición a columna */
+    height: auto;                    /* Permite que el header crezca en altura */
+    padding: 1rem 5vw;               /* Reduce el padding lateral */
+
+    &__logo {
+      margin-bottom: 1rem;             /* Añade separación debajo del logo */
+    }
+
+    &__nav-list {
+      align-items: center;             /* Centra la lista en columna */
+      flex-direction: column;          /* Coloca enlaces en columna */
+    }
+
+    &__nav-item {
+      margin-bottom: 0.5rem;           /* Espacio entre enlaces de navegación */
+      margin-left: 0;                  /* Elimina margen izquierdo */
+    }
+  }
+
+}
+
+.index-footer{
+  /* Propiedades de disposición y espaciado */
+  align-items: center;              /* Centra verticalmente el contenido */
+  box-sizing: border-box;           /* Incluye padding en el tamaño total */
+  display: flex;                    /* Usa Flexbox para disposición básica */
+  font-family: $font-family-sans-serif; /* Fuente para el texto */
+  height: 10lvh;                    /* Altura del footer */
+  justify-content: space-between;   /* Espaciado entre logo, navegación y social */
+  padding: 1rem 10lvw;              /* Espaciado lateral */
+  position: relative;               /* Para posicionar el pseudo-elemento antes */
+
+  /* Usar el soporte de OKLCH si está disponible */
+  @supports (color: oklch(0.6 0.2 90)) {
+    background-color: $header-footer-background-oklch;
+    color: $header-footer-font-color-oklch;
+  }
+
+  /* Usar Display-P3 si OKLCH no está disponible, pero Display-P3 sí lo está */
+  @supports (color: color(display-p3 0.95 0.95 0.98)) {
+    @supports not (color: oklch(0.6 0.2 90)) {
+      background-color: $header-footer-background-display-p3;
+      color: $header-footer-font-color-display-p3;
+    }
+  }
+
+  /* Fallback para navegadores que no soportan OKLCH ni Display-P3 */
+  @supports not (color: color(display-p3 0.95 0.95 0.98)) {
+    @supports not (color: oklch(0.6 0.2 90)) {
+      background-color: $header-footer-background-color;
+      color: $header-footer-font-color;
+    }
+  }
+
+  &__logo {
+    img {
+      height: auto;                 /* Mantiene la proporción de la imagen */
+      width: 5lvw;                  /* Define un ancho relativo */
+    }
+  }
+
+  &__social {
+    display: flex;                  /* Flex para los iconos de redes sociales */
+    gap: 1lvw;                      /* Espacio entre iconos de redes */
+  }
+
+  &__social-link {
+    /* Usar el soporte de OKLCH si está disponible */
+    @supports (color: oklch(0.6 0.2 90)) {
+      color: $header-footer-font-color-oklch;
+    }
+
+    /* Usar Display-P3 si OKLCH no está disponible, pero Display-P3 sí lo está */
+    @supports (color: color(display-p3 0.95 0.95 0.98)) {
+      @supports not (color: oklch(0.6 0.2 90)) {
+        color: $header-footer-font-color-display-p3;
       }
     }
 
-    /* Sección derecha con el contenido principal */
-    &__right {
-      padding: 10px; /* Espaciado interno de la sección derecha */
-
-      /* Mostrar el enlace "Leer más" en pantallas pequeñas */
-      @media (width <= 768px) {width: 100%; /* Asegura que ocupe todo el ancho disponible */}
-
-      /* Cada elemento dentro de la sección derecha */
-      &__element {
-        display: none; /* Oculto por defecto, se mostrará dinámicamente */
-
-        /* Mostrar solo cuando esté activo */
-        &.active { display: block; /* Muestra el elemento activo */}
-
-        /* Estilos del título */
-        &__title {
-          font-weight: bold; /* Texto en negrita */
-          text-decoration: underline; /* Subrayado */
-          text-decoration-color: $barakaldo-yellow; /* Color del subrayado amarillo */
-          display: flex; /* Utiliza flexbox para la alineación */
-          align-items: center; /* Alinea verticalmente el contenido */
-          gap: 8px; /* Espaciado entre ícono y texto */
-        }
-
-        /* Estilos del párrafo dentro de la sección */
-        &__paragraph {
-          overflow: hidden; /* Oculta el desbordamiento del contenido */
-          height: auto; /* Altura automática para el contenido */
-          transition: height 0.3s ease-in-out; /* Transición suave al expandir */
-
-          &__expanded { height: auto; /* Altura ajustada automáticamente cuando se expande */ }
-        }
-
-        /* Estilos del enlace "Leer más" */
-        &__toggle-text {
-          display: none; /* Oculto por defecto, solo se muestra en pantallas pequeñas */
-          color: $barakaldo-yellow; /* Color del enlace "Leer más" */
-          cursor: pointer; /* Cambia el cursor a puntero al pasar sobre el enlace */
-          text-decoration: underline; /* Subrayado para el enlace "Leer más" */
-
-          /* Mostrar el enlace "Leer más" en pantallas pequeñas */
-          @media (width <= 768px) {display: block; /* Muestra el enlace en pantallas pequeñas */ }
-        }
+    /* Fallback para navegadores que no soportan OKLCH ni Display-P3 */
+    @supports not (color: color(display-p3 0.95 0.95 0.98)) {
+      @supports not (color: oklch(0.6 0.2 90)) {
+        color: $header-footer-font-color;
       }
     }
 
+    padding: 0.5lvw;                /* Espaciado dentro del enlace */
+    text-decoration: none;          /* Quita subrayado */
 
+  }
+
+  &__nav-list {
+    display: flex;                  /* Flexbox para la lista de navegación */
+    gap: 1.5rem;                    /* Espacio entre elementos de la lista */
+    justify-content: flex-end;      /* Alinea la lista hacia la derecha */
+    list-style: none;               /* Quita los marcadores de la lista */
+    margin: 0;
+    padding: 0;
+  }
+
+  &__nav-item {
+    font-weight: 700;              /* Texto en negrita */
+    text-decoration: none;          /* Quita subrayado */
+  }
+
+  &__nav-link {
+    color: $header-footer-font-color; /* Color del enlace */
+    padding: 0.5rem;                 /* Espaciado dentro del enlace */
+    text-decoration: none;           /* Quita subrayado */
+  }
+
+}
+
+/* Soporte para Grid */
+@supports (display: grid) {
+  .index-footer {
+    display: grid;                      /* Cambia de Flex a Grid */
+    grid-template-columns: auto 1fr auto; /* Define tres columnas en el grid */
+    height: 10lvh;                      /* Aumenta la altura en grid */
+
+    &__logo {
+      align-self: center;               /* Centra verticalmente el logo */
+      grid-column: 1;
+    }
+
+    &__nav {
+      grid-column: 2;                   /* Ubica navegación en la columna central */
+      justify-self: center;             /* Centra la navegación */
+    }
+
+    &__social {
+      grid-column: 3;                   /* Social en la tercera columna */
+      text-align: right;                /* Alinea iconos a la derecha */
+    }
+  }
+}
+
+/* Media Query para pantallas pequeñas */
+@media (width <= 768px) {
+  .index-footer {
+    flex-direction: column;            /* Cambia a disposición en columna */
+    height: auto;                      /* Permite crecer en altura */
+    padding: 1rem 5vw;                 /* Reduce el padding lateral */
+
+    &__logo {
+      margin-bottom: 1rem;             /* Añade separación debajo del logo */
+    }
+
+    &__nav-list {
+      align-items: center;             /* Centra la lista en columna */
+      flex-direction: column;          /* Pone enlaces de navegación en columna */
+    }
+
+    &__social {
+      margin-top: 1rem;                /* Añade separación encima de redes sociales */
+    }
+
+    &__social-link {
+      margin: 0 0.5rem;                /* Ajusta margen entre iconos */
+    }
+  }
+}
+
+.container {
+  align-items: center;                  /* Centra el contenido verticalmente */
+  background-image: url("../images/fondo.jpg"); /* Imagen de fondo */
+  background-position: center;          /* Centra la imagen de fondo */
+  background-repeat: no-repeat;         /* Evita que la imagen de fondo se repita */
+  background-size: cover;               /* Escala la imagen para cubrir todo el contenedor */
+  color: $white-color;                  /* Color de texto */
+  display: flex;                        /* Flexbox para centrar contenido */
+  justify-content: center;              /* Centra el contenido horizontalmente */
+  min-height: 100vh;                    /* Asegura que el contenedor ocupe el alto de la pantalla */
+  text-align: center;                   /* Centra el texto */
+  width: 100vw;                         /* Ancho completo de la pantalla */
+
+  &__logo img {
+    height: auto;                       /* Mantiene la proporción de la imagen */
+    margin-right: 2rem;                 /* Espacio a la derecha de la imagen */
+    max-width: 20vw;                    /* Limita el ancho de la imagen */
+  }
+
+  &__contenido {
+    max-width: 50vw;                    /* Limita el ancho del contenido */
+  }
+
+  &__titulo {
+    font-size: 2rem;                    /* Tamaño de la fuente */
+    font-weight: 700;                  /* Texto en negrita */
+    margin-bottom: 1rem;                /* Espacio debajo del título */
+  }
+
+  &__subtitulo {
+    font-size: 1.2rem;                  /* Tamaño de la fuente del subtítulo */
+    font-weight: 700;                  /* Negrita en el subtítulo */
+  }
+}
+
+/* Cambia la disposición a Grid si es soportado */
+@supports (display: grid) {
+  .container {
+    display: grid;                      /* Cambia de Flexbox a Grid */
+    gap: 1rem;                          /* Espacio entre elementos en el grid */
+    grid-template-columns: 1fr 1fr;     /* Dos columnas de tamaño igual */
+    grid-template-rows: auto auto;      /* Dos filas automáticas */
+
+    &__logo {
+      grid-column: 1 / 2;               /* Coloca el logo en la primera columna */
+      grid-row: 1 / 3;                  /* Ocupa dos filas en la columna */
+      place-self: center;               /* Centra el logo horizontalmente */
+    }
+
+    &__contenido {
+      grid-column: 2 / 3;               /* Coloca el contenido en la segunda columna */
+      grid-row: 1 / 3;                  /* Ocupa dos filas en la segunda columna */
+    }
+
+    &__titulo {
+      grid-row: 1;                      /* Coloca el título en la primera fila */
+    }
+
+    &__subtitulo {
+      grid-row: 2;                      /* Coloca el subtítulo en la segunda fila */
+    }
   }
 }
