@@ -1,335 +1,329 @@
-
 .about-container{
   &__section-first{
-    align-items: center;
-    display: flex;
-    gap: 2dvmin;      /* Espacio entre elementos ajustado proporcionalmente */
-    justify-content: center;
-    padding: 2dvmin;  /* Padding ajustado proporcionalmente */
-    width: 100%; /* Aseguramos que ocupe el 100% */
+    align-items: center;  /* Centra los elementos verticalmente */
+    display: flex;        /* Usamos flexbox para alinear los elementos */
+    gap: 2dvmin;          /* Espacio entre elementos ajustado proporcionalmente */
+    justify-content: center;  /* Centra los elementos horizontalmente */
+    padding: 2dvmin;      /* Padding ajustado proporcionalmente */
+    width: 100%;          /* Asegura que ocupe el 100% del ancho disponible */
 
     /* Usar el soporte de OKLCH si está disponible */
     @supports (color: oklch(0.6 0.2 90)) {
-      background-color: $header-footer-background-color;
-      color: $header-footer-font-color-oklch; /* Aplica un color moderno basado en OKLCH */
+      background-color: $header-footer-background-color;  /* Aplica el color de fondo */
+      color: $header-footer-font-color-oklch;  /* Aplica un color moderno basado en OKLCH */
     }
 
     /* Usar Display-P3 si OKLCH no está disponible, pero Display-P3 sí lo está */
     @supports (color: color(display-p3 0.95 0.95 0.98)) {
       @supports not (color: oklch(0.6 0.2 90)) {
-        background-color: $header-footer-background-color;
-        color: $header-footer-font-color-display-p3; /* Aplica un color en el espacio Display-P3 */
+        background-color: $header-footer-background-color;  /* Aplica el color de fondo */
+        color: $header-footer-font-color-display-p3;  /* Aplica un color en el espacio Display-P3 */
       }
     }
 
     /* Fallback para navegadores que no soportan OKLCH ni Display-P3 */
     @supports not (color: color(display-p3 0.95 0.95 0.98)) {
       @supports not (color: oklch(0.6 0.2 90)) {
-        background-color: $header-footer-background-color;
-        color: $header-footer-font-color; /* Aplica un color de reserva convencional */
+        background-color: $header-footer-background-color;  /* Aplica el color de fondo */
+        color: $header-footer-font-color;  /* Aplica un color de reserva convencional */
       }
     }
 
     &-image{
-      border-radius: 50%;
-      box-shadow: 0 4px 6px rgb(0 0 0 / 20%); /* Pequeña sombra para destacar */
-      height: 300px;
-      object-fit: cover; /* Asegura que la imagen mantenga proporción */
-      width: 300px;
-      @container (max-width: 768px) {
-        height: 150px;
-        width: 150px;
-      }
-      @media (width <= 768px) {
-        height: 150px;
-        width: 150px;
+      border-radius: 50%;  /* Hace la imagen redonda */
+      box-shadow: 0 4px 6px rgb(0 0 0 / 20%);  /* Pequeña sombra para destacar la imagen */
+      height: 300px;  /* Altura de la imagen */
+      object-fit: cover;  /* Asegura que la imagen mantenga proporción */
+      width: 300px;  /* Ancho de la imagen */
 
+      @container (max-width: 768px) {
+        height: 150px;  /* Reduce la altura en pantallas pequeñas */
+        width: 150px;   /* Reduce el ancho en pantallas pequeñas */
+      }
+
+      @media (width <= 768px) {
+        height: 150px;  /* Reduce la altura en pantallas pequeñas */
+        width: 150px;   /* Reduce el ancho en pantallas pequeñas */
       }
     }
 
     &-title{
-      font-weight: 500;
-      max-width: 40lvh; /* Limita el ancho del texto */
+      font-weight: 500;  /* Peso de la fuente */
+      max-width: 40lvh;  /* Limita el ancho del texto */
 
       :is(&-author) {
-        color: $white-color;  /* Color de texto */
-        font-family: $font-family-secundary;
-        font-style: italic;
-        font-weight: 900;
-
+        color: $white-color;  /* Color del texto */
+        font-family: $font-family-secundary;  /* Fuente secundaria */
+        font-style: italic;  /* Estilo de fuente en cursiva */
+        font-weight: 900;    /* Peso de la fuente */
       }
     }
   }
 
   &__section-second{
-    align-items: flex-start;
-    display: flex;
-    gap: 2dvmin;
+    align-items: flex-start;  /* Alinea los elementos al inicio */
+    display: flex;            /* Usamos flexbox para organizar los elementos */
+    gap: 2dvmin;              /* Espacio entre elementos ajustado proporcionalmente */
 
     &-quote{
-      flex: 1;
-      font-family: $font-family-secundary;
-      font-size: 3dvmin;
-      font-style: italic;
-      font-weight: 300;
-      margin-left: calc(1dvmin + 15vw);
-      text-align: left;
+      flex: 1;  /* Permite que el elemento de la cita ocupe el espacio disponible */
+      font-family: $font-family-secundary;  /* Fuente secundaria */
+      font-size: 3dvmin;  /* Tamaño de fuente proporcional */
+      font-style: italic; /* Estilo de fuente en cursiva */
+      font-weight: 300;   /* Peso de la fuente */
+      margin-left: calc(1dvmin + 15vw);  /* Ajuste de margen izquierdo en pantallas grandes */
+      text-align: left;  /* Alineación del texto a la izquierda */
 
       @container (max-width: 768px) {
-        margin-left: calc(1dvmin + 5vw);
+        margin-left: calc(1dvmin + 5vw);  /* Ajusta el margen izquierdo en pantallas pequeñas */
       }
+
       @media (width <= 768px) {
-        margin-left: calc(1dvmin + 5vw);
+        margin-left: calc(1dvmin + 5vw);  /* Ajusta el margen izquierdo en pantallas pequeñas */
       }
 
       @supports (color: oklch(0.6 0.2 90)) {
-        color: $header-footer-text-oklch; /* Aplica un color moderno basado en OKLCH */
-       }
+        color: $header-footer-text-oklch;  /* Aplica un color moderno basado en OKLCH */
+      }
 
-       /* Usar Display-P3 si OKLCH no está disponible, pero Display-P3 sí lo está */
-       @supports (color: color(display-p3 0.95 0.95 0.98)) {
-         @supports not (color: oklch(0.6 0.2 90)) {
-           color: $header-footer-text-display-p3; /* Aplica un color en el espacio Display-P3 */
-         }
-       }
+      /* Usar Display-P3 si OKLCH no está disponible, pero Display-P3 sí lo está */
+      @supports (color: color(display-p3 0.95 0.95 0.98)) {
+        @supports not (color: oklch(0.6 0.2 90)) {
+          color: $header-footer-text-display-p3;  /* Aplica un color en el espacio Display-P3 */
+        }
+      }
 
-       /* Fallback para navegadores que no soportan OKLCH ni Display-P3 */
-       @supports not (color: color(display-p3 0.95 0.95 0.98)) {
-         @supports not (color: oklch(0.6 0.2 90)) {
-           color: $header-footer-text-color; /* Aplica un color de reserva convencional */
-         }
-       }
+      /* Fallback para navegadores que no soportan OKLCH ni Display-P3 */
+      @supports not (color: color(display-p3 0.95 0.95 0.98)) {
+        @supports not (color: oklch(0.6 0.2 90)) {
+          color: $header-footer-text-color;  /* Aplica un color de reserva convencional */
+        }
+      }
     }
 
     &-content{
-      flex: 1;
-      font-family: $font-family-sans-serif;
-      font-size: 2dvmin;
-      margin-right: 15lvw;
-      text-align: justify;
+      flex: 1;  /* Permite que el contenido ocupe el espacio restante */
+      font-family: $font-family-sans-serif;  /* Fuente sans-serif */
+      font-size: 2dvmin;  /* Tamaño de la fuente proporcional */
+      margin-right: 15lvw;  /* Margen derecho */
+      text-align: justify;  /* Alineación del texto justificado */
 
       @container (max-width: 768px) {
-        margin-right: 5lvw;
+        margin-right: 5lvw;  /* Ajusta el margen en pantallas pequeñas */
       }
+
       @media (width <= 768px) {
-        margin-right: 5lvw;
+        margin-right: 5lvw;  /* Ajusta el margen en pantallas pequeñas */
       }
     }
 
     &-content:is(div) {
-      border-left: 4px solid $header-footer-text-oklch;
-      padding: 1dvmin;
+      border-left: 4px solid $header-footer-text-oklch;  /* Borde izquierdo para los divs */
+      padding: 1dvmin;  /* Padding ajustado proporcionalmente */
     }
-
   }
 
-
-
   &__section-forth{
-    display: flex;
-    flex-direction: column; /* Asegura que los elementos se apilen en columna */
-    gap: 1dvmin; /* Espaciado entre el bloque de la cita y el contenido */
-    margin-left: calc(1dvmin + 15vw);
-    margin-right: 15lvw;
+    display: flex;            /* Usamos flexbox */
+    flex-direction: column;   /* Los elementos se apilan en columna */
+    gap: 1dvmin;              /* Espaciado entre bloques */
+    margin-left: calc(1dvmin + 15vw);  /* Margen izquierdo en pantallas grandes */
+    margin-right: 15lvw;      /* Margen derecho en pantallas grandes */
 
     @container (max-width: 768px) {
-      margin-left: calc(1dvmin + 5vw);
-      margin-right: 5lvw;
+      margin-left: calc(1dvmin + 5vw);  /* Ajusta el margen en pantallas pequeñas */
+      margin-right: 5lvw;              /* Ajusta el margen en pantallas pequeñas */
     }
+
     @media (width <= 768px) {
-      margin-left: calc(1dvmin + 5vw);
-      margin-right: 5lvw;
+      margin-left: calc(1dvmin + 5vw);  /* Ajusta el margen en pantallas pequeñas */
+      margin-right: 5lvw;              /* Ajusta el margen en pantallas pequeñas */
     }
 
     &-quote {
-      font-family: $font-family-secundary;
-      font-size: 3dvmin;
-      font-style: italic;
-      font-weight: 300;
-      margin-bottom: 1dvmin; /* Espaciado inferior */
-      text-align: justify;
+      font-family: $font-family-secundary;  /* Fuente secundaria */
+      font-size: 3dvmin;  /* Tamaño de la fuente proporcional */
+      font-style: italic; /* Estilo en cursiva */
+      font-weight: 300;   /* Peso de la fuente */
+      margin-bottom: 1dvmin;  /* Espaciado inferior */
+      text-align: justify;  /* Alineación del texto justificado */
 
       @supports (color: oklch(0.6 0.2 90)) {
-        color: $header-footer-text-oklch; /* Aplica un color moderno basado en OKLCH */
-       }
+        color: $header-footer-text-oklch;  /* Aplica un color moderno basado en OKLCH */
+      }
 
-       /* Usar Display-P3 si OKLCH no está disponible, pero Display-P3 sí lo está */
-       @supports (color: color(display-p3 0.95 0.95 0.98)) {
-         @supports not (color: oklch(0.6 0.2 90)) {
-           color: $header-footer-text-display-p3; /* Aplica un color en el espacio Display-P3 */
-         }
-       }
+      /* Usar Display-P3 si OKLCH no está disponible, pero Display-P3 sí lo está */
+      @supports (color: color(display-p3 0.95 0.95 0.98)) {
+        @supports not (color: oklch(0.6 0.2 90)) {
+          color: $header-footer-text-display-p3;  /* Aplica un color en el espacio Display-P3 */
+        }
+      }
 
-       /* Fallback para navegadores que no soportan OKLCH ni Display-P3 */
-       @supports not (color: color(display-p3 0.95 0.95 0.98)) {
-         @supports not (color: oklch(0.6 0.2 90)) {
-           color: $header-footer-text-color; /* Aplica un color de reserva convencional */
-         }
-       }
-
+      /* Fallback para navegadores que no soportan OKLCH ni Display-P3 */
+      @supports not (color: color(display-p3 0.95 0.95 0.98)) {
+        @supports not (color: oklch(0.6 0.2 90)) {
+          color: $header-footer-text-color;  /* Aplica un color de reserva convencional */
+        }
+      }
     }
 
     &-content {
-      font-family: $font-family-sans-serif;
-      font-size: 2dvmin;
-      line-height: 1.5;
-      text-align: justify;
-
+      font-family: $font-family-sans-serif;  /* Fuente sans-serif */
+      font-size: 2dvmin;  /* Tamaño de la fuente proporcional */
+      line-height: 1.5;   /* Altura de línea */
+      text-align: justify;  /* Alineación del texto justificado */
     }
 
     &-content:is(div) {
-      border-left: 4px solid $header-footer-text-oklch;
-      padding: 1dvmin;
+      border-left: 4px solid $header-footer-text-oklch;  /* Borde izquierdo */
+      padding: 1dvmin;  /* Padding ajustado proporcionalmente */
     }
   }
 
   &__section-fifth:has(img) {
-    margin-left: calc(1dvmin + 10vw);
-    margin-right: 10lvw;
+    margin-left: calc(1dvmin + 10vw);  /* Ajusta el margen izquierdo en pantallas grandes */
+    margin-right: 10lvw;  /* Ajusta el margen derecho en pantallas grandes */
 
     @container (max-width: 768px) {
-      margin-left: calc(1dvmin + 5vw);
-      margin-right: 5lvw;
+      margin-left: calc(1dvmin + 5vw);  /* Ajusta el margen en pantallas pequeñas */
+      margin-right: 5lvw;              /* Ajusta el margen en pantallas pequeñas */
     }
+
     @media (width <= 768px) {
-      margin-left: calc(1dvmin + 5vw);
-      margin-right: 5lvw;
+      margin-left: calc(1dvmin + 5vw);  /* Ajusta el margen en pantallas pequeñas */
+      margin-right: 5lvw;              /* Ajusta el margen en pantallas pequeñas */
     }
   }
 
   &__section-sixth {
-    font-family: $font-family-sans-serif;
-    font-size: 2dvmin;
-    line-height: 1.5;
-    margin-left: calc(1dvmin + 15vw);
-    margin-right: 15lvw;
-    text-align: justify;
+    font-family: $font-family-sans-serif;  /* Fuente sans-serif */
+    font-size: 2dvmin;  /* Tamaño de la fuente proporcional */
+    line-height: 1.5;   /* Altura de línea */
+    margin-left: calc(1dvmin + 15vw);  /* Margen izquierdo en pantallas grandes */
+    margin-right: 15lvw;  /* Margen derecho en pantallas grandes */
+    text-align: justify;  /* Alineación del texto justificado */
 
     @container (max-width: 768px) {
-      margin-left: calc(1dvmin + 5vw);
-      margin-right: 5lvw;
+      margin-left: calc(1dvmin + 5vw);  /* Ajusta el margen en pantallas pequeñas */
+      margin-right: 5lvw;              /* Ajusta el margen en pantallas pequeñas */
     }
+
     @media (width <= 768px) {
-      margin-left: calc(1dvmin + 5vw);
-      margin-right: 5lvw;
+      margin-left: calc(1dvmin + 5vw);  /* Ajusta el margen en pantallas pequeñas */
+      margin-right: 5lvw;              /* Ajusta el margen en pantallas pequeñas */
     }
 
     :is(strong, em) {
       @supports (color: oklch(0.6 0.2 90)) {
-        color: $header-footer-text-oklch; /* Aplica un color moderno basado en OKLCH */
-       }
+        color: $header-footer-text-oklch;  /* Aplica un color moderno basado en OKLCH */
+      }
 
-       /* Usar Display-P3 si OKLCH no está disponible, pero Display-P3 sí lo está */
-       @supports (color: color(display-p3 0.95 0.95 0.98)) {
-         @supports not (color: oklch(0.6 0.2 90)) {
-           color: $header-footer-text-display-p3; /* Aplica un color en el espacio Display-P3 */
-         }
-       }
+      /* Usar Display-P3 si OKLCH no está disponible, pero Display-P3 sí lo está */
+      @supports (color: color(display-p3 0.95 0.95 0.98)) {
+        @supports not (color: oklch(0.6 0.2 90)) {
+          color: $header-footer-text-display-p3;  /* Aplica un color en el espacio Display-P3 */
+        }
+      }
 
-       /* Fallback para navegadores que no soportan OKLCH ni Display-P3 */
-       @supports not (color: color(display-p3 0.95 0.95 0.98)) {
-         @supports not (color: oklch(0.6 0.2 90)) {
-           color: $header-footer-text-color; /* Aplica un color de reserva convencional */
-         }
-       }
+      /* Fallback para navegadores que no soportan OKLCH ni Display-P3 */
+      @supports not (color: color(display-p3 0.95 0.95 0.98)) {
+        @supports not (color: oklch(0.6 0.2 90)) {
+          color: $header-footer-text-color;  /* Aplica un color de reserva convencional */
+        }
+      }
     }
   }
-
-
 }
 
-/* Sacamos la tercera seccion porque nos da error de anidacion el styleint */
+/* Sacamos la tercera sección porque nos da error de anidación en stylelint */
 .about-container__section-third{
-  margin-bottom: 2dvmin;
-  margin-top: 2dvmin;
-
+  margin-bottom: 2dvmin;  /* Margen inferior */
+  margin-top: 2dvmin;     /* Margen superior */
 
   &__list {
-    counter-reset: li; /* Reiniciar el contador de la lista */
-    margin-left: calc(1dvmin + 15vw);
-    margin-right: 15vw;
-    padding: 0;
+    counter-reset: li;   /* Reiniciar el contador de la lista */
+    margin-left: calc(1dvmin + 15vw);  /* Margen izquierdo en pantallas grandes */
+    margin-right: 15vw;  /* Margen derecho en pantallas grandes */
+    padding: 0;          /* Sin padding */
 
     @container (max-width: 768px) {
-      margin-left: calc(1dvmin + 5vw);
-      margin-right: 5lvw;
+      margin-left: calc(1dvmin + 5vw);  /* Ajusta el margen izquierdo en pantallas pequeñas */
+      margin-right: 5lvw;              /* Ajusta el margen derecho en pantallas pequeñas */
     }
+
     @media (width <= 768px) {
-      margin-left: calc(1dvmin + 5vw);
-      margin-right: 5lvw;
+      margin-left: calc(1dvmin + 5vw);  /* Ajusta el margen izquierdo en pantallas pequeñas */
+      margin-right: 5lvw;              /* Ajusta el margen derecho en pantallas pequeñas */
     }
 
     &-item {
-      list-style: none;
-      margin-bottom: 2dvmin; /* Espaciado inferior entre elementos */
-      padding-left: 3dvmin; /* Espacio para el círculo numerado */
-      position: relative;
+      list-style: none;  /* Elimina los puntos de la lista */
+      margin-bottom: 2dvmin;  /* Espaciado inferior entre elementos */
+      padding-left: 3dvmin;   /* Espacio para el círculo numerado */
+      position: relative;    /* Posición relativa para el contador */
 
       &-title {
-        font-size: 2dvmin;
-        font-weight: 700;
-        margin: 0;
+        font-size: 2dvmin;  /* Tamaño de fuente proporcional */
+        font-weight: 700;   /* Peso de la fuente */
+        margin: 0;          /* Sin márgenes */
 
         @supports (color: oklch(0.6 0.2 90)) {
-          color: $header-footer-text-oklch;
-         }
+          color: $header-footer-text-oklch;  /* Aplica un color moderno basado en OKLCH */
+        }
 
-         @supports (color: color(display-p3 0.95 0.95 0.98)) {
-           @supports not (color: oklch(0.6 0.2 90)) {
-             color: $header-footer-text-display-p3;
-           }
-         }
+        @supports (color: color(display-p3 0.95 0.95 0.98)) {
+          @supports not (color: oklch(0.6 0.2 90)) {
+            color: $header-footer-text-display-p3;  /* Aplica un color en el espacio Display-P3 */
+          }
+        }
 
-         @supports not (color: color(display-p3 0.95 0.95 0.98)) {
-           @supports not (color: oklch(0.6 0.2 90)) {
-             color: $header-footer-text-color;
-           }
-         }
+        @supports not (color: color(display-p3 0.95 0.95 0.98)) {
+          @supports not (color: oklch(0.6 0.2 90)) {
+            color: $header-footer-text-color;  /* Aplica un color de reserva convencional */
+          }
+        }
       }
 
       &-text {
-        font-size: 2dvmin;
-        margin: 0.5dvmin 0 0 ;
-
+        font-size: 2dvmin;  /* Tamaño de fuente proporcional */
+        margin: 0.5dvmin 0 0;  /* Margen superior */
       }
     }
 
     &-item::before {
-      align-items: center;
-      background-color: transparent;
-      border-radius: 50%;
-      content: counter(li);
-      counter-increment: li;
-      display: flex;
-      font-size: 1.5dvmin;
-      font-weight: 700;
-      height: 2.5dvmin;
-      justify-content: center;
-      left: 0;
-      position: absolute;
-      top: 0.2dvmin;
-      width: 2.5dvmin;
-
+      align-items: center;  /* Alinea el contador verticalmente */
+      background-color: transparent;  /* Fondo transparente */
+      border-radius: 50%;  /* Hace el círculo */
+      content: counter(li);  /* Muestra el número de la lista */
+      counter-increment: li;  /* Incrementa el contador */
+      display: flex;         /* Usamos flexbox */
+      font-size: 1.5dvmin;    /* Tamaño de fuente proporcional */
+      font-weight: 700;      /* Peso de la fuente */
+      height: 2.5dvmin;      /* Tamaño del círculo */
+      justify-content: center;  /* Centra el texto */
+      left: 0;               /* Alineación izquierda */
+      position: absolute;    /* Posición absoluta para el círculo */
+      top: 0.2dvmin;         /* Ajuste de la posición superior */
+      width: 2.5dvmin;       /* Tamaño del círculo */
 
       @supports (color: oklch(0.6 0.2 90)) {
-        border: 2px solid $header-footer-text-oklch;
-        color: $header-footer-text-oklch;
+        border: 2px solid $header-footer-text-oklch;  /* Borde con color moderno basado en OKLCH */
+        color: $header-footer-text-oklch;  /* Color basado en OKLCH */
       }
 
       @supports (color: color(display-p3 0.95 0.95 0.98)) {
         @supports not (color: oklch(0.6 0.2 90)) {
-          border: 2px solid $header-footer-text-display-p3;
-          color: $header-footer-text-display-p3;
+          border: 2px solid $header-footer-text-display-p3;  /* Borde con color en Display-P3 */
+          color: $header-footer-text-display-p3;  /* Color en Display-P3 */
         }
       }
 
       @supports not (color: color(display-p3 0.95 0.95 0.98)) {
         @supports not (color: oklch(0.6 0.2 90)) {
-          border: 2px solid $header-footer-text-color;
-          color: $header-footer-text-color;
+          border: 2px solid $header-footer-text-color;  /* Borde con color convencional */
+          color: $header-footer-text-color;  /* Color convencional */
         }
       }
     }
-
   }
 }

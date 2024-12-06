@@ -1,7 +1,6 @@
 @layer speaker-base, speaker-responsive;
 
 @layer speaker-base {
-
   .speakers-container {
   margin: 0 auto; /* Centra el contenedor horizontalmente */
   max-width: 1200px; /* Limita el ancho del contenedor */
@@ -27,14 +26,13 @@
     border-radius: 10px; /* Esquinas redondeadas */
     box-shadow: 0 4px 6px rgb(0 0 0 / 10%); /* Sombra sutil alrededor de la tarjeta */
     display: flex; /* Flexbox para organizar el contenido interno */
+    flex: 1 1 calc(33.333% - 40px); /* Tres tarjetas por fila en pantallas grandes */
     flex-direction: column; /* Coloca la imagen y el texto en columnas */
+    max-width: 300px; /* Tamaño máximo de la tarjeta */
+    overflow: hidden; /* Oculta contenido desbordado */
     padding: 15px; /* Espaciado interno */
     text-align: center; /* Centra el texto */
 
-    /* Diseño adaptable para diferentes dispositivos */
-    flex: 1 1 calc(33.333% - 40px); /* Tres tarjetas por fila en pantallas grandes */
-    max-width: 300px; /* Tamaño máximo de la tarjeta */
-    overflow: hidden; /* Oculta contenido desbordado */
   }
 
   .card-body {
@@ -78,13 +76,13 @@
   }
 
   /* Si no se soportan container queries, usamos las media queries tradicionales */
-  @media (min-width: 1024px) {
+  @media (width >= 1024px) {
     .speakers-container__grid {
       justify-content: space-between; /* Espaciado entre tarjetas */
     }
   }
 
-  @media (max-width: 1024px) and (min-width: 769px) {
+  @media (width <= 1024px) and (width >= 769px) {
     .speakers-container__grid {
       justify-content: space-between; /* Espaciado entre las tarjetas en pantallas medianas */
     }
@@ -94,7 +92,7 @@
     }
   }
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     .speakers-container__grid {
       justify-content: center; /* Centra las tarjetas en pantallas pequeñas */
     }
@@ -129,7 +127,7 @@
 .card-body h5 {
   display: block; /* Título de la tarjeta */
   margin-bottom: 10px; /* Espaciado inferior */
-  //text-align: center; /* Centra el texto en el título */
+
   /* Soporte progresivo para colores avanzados */
   @supports (color: oklch(0.6 0.2 90)) {
     color: $header-footer-text-oklch; /* Aplica un color moderno basado en OKLCH */

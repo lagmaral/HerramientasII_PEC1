@@ -11,23 +11,23 @@
 
   /* Usar el soporte de OKLCH si está disponible */
   @supports (color: oklch(0.6 0.2 90)) {
-    background-color: $header-footer-background-oklch;
-    color: $header-footer-font-color-oklch;
+    background-color: $header-footer-background-oklch; /* Fondo con OKLCH */
+    color: $header-footer-font-color-oklch;           /* Color de texto con OKLCH */
   }
 
   /* Usar Display-P3 si OKLCH no está disponible, pero Display-P3 sí lo está */
   @supports (color: color(display-p3 0.95 0.95 0.98)) {
     @supports not (color: oklch(0.6 0.2 90)) {
-      background-color: $header-footer-background-display-p3;
-      color: $header-footer-font-color-display-p3;
+      background-color: $header-footer-background-display-p3; /* Fondo con Display-P3 */
+      color: $header-footer-font-color-display-p3;            /* Color de texto con Display-P3 */
     }
   }
 
   /* Fallback para navegadores que no soportan OKLCH ni Display-P3 */
   @supports not (color: color(display-p3 0.95 0.95 0.98)) {
     @supports not (color: oklch(0.6 0.2 90)) {
-      background-color: $header-footer-background-color;
-      color: $header-footer-font-color;
+      background-color: $header-footer-background-color;  /* Fondo estándar */
+      color: $header-footer-font-color;                   /* Color de texto estándar */
     }
   }
 
@@ -38,10 +38,8 @@
     }
   }
 
-
-
   &__nav-hidden{
-    display: none;
+    display: none; /* Oculta la navegación */
   }
 
   &__nav-list {
@@ -64,7 +62,6 @@
     color: $header-footer-font-color; /* Color del enlace */
     padding: 0.5rem;                  /* Espaciado dentro del enlace */
     text-decoration: none;            /* Quita subrayado */
-
   }
 }
 
@@ -108,7 +105,6 @@
       margin-left: 0;                  /* Elimina margen izquierdo */
     }
   }
-
 }
 
 .index-footer{
@@ -124,23 +120,23 @@
 
   /* Usar el soporte de OKLCH si está disponible */
   @supports (color: oklch(0.6 0.2 90)) {
-    background-color: $header-footer-background-oklch;
-    color: $header-footer-font-color-oklch;
+    background-color: $header-footer-background-oklch; /* Fondo con OKLCH */
+    color: $header-footer-font-color-oklch;           /* Color de texto con OKLCH */
   }
 
   /* Usar Display-P3 si OKLCH no está disponible, pero Display-P3 sí lo está */
   @supports (color: color(display-p3 0.95 0.95 0.98)) {
     @supports not (color: oklch(0.6 0.2 90)) {
-      background-color: $header-footer-background-display-p3;
-      color: $header-footer-font-color-display-p3;
+      background-color: $header-footer-background-display-p3; /* Fondo con Display-P3 */
+      color: $header-footer-font-color-display-p3;            /* Color de texto con Display-P3 */
     }
   }
 
   /* Fallback para navegadores que no soportan OKLCH ni Display-P3 */
   @supports not (color: color(display-p3 0.95 0.95 0.98)) {
     @supports not (color: oklch(0.6 0.2 90)) {
-      background-color: $header-footer-background-color;
-      color: $header-footer-font-color;
+      background-color: $header-footer-background-color;  /* Fondo estándar */
+      color: $header-footer-font-color;                   /* Color de texto estándar */
     }
   }
 
@@ -159,26 +155,25 @@
   &__social-link {
     /* Usar el soporte de OKLCH si está disponible */
     @supports (color: oklch(0.6 0.2 90)) {
-      color: $header-footer-font-color-oklch;
+      color: $header-footer-font-color-oklch;  /* Color con OKLCH */
     }
 
     /* Usar Display-P3 si OKLCH no está disponible, pero Display-P3 sí lo está */
     @supports (color: color(display-p3 0.95 0.95 0.98)) {
       @supports not (color: oklch(0.6 0.2 90)) {
-        color: $header-footer-font-color-display-p3;
+        color: $header-footer-font-color-display-p3; /* Color con Display-P3 */
       }
     }
 
     /* Fallback para navegadores que no soportan OKLCH ni Display-P3 */
     @supports not (color: color(display-p3 0.95 0.95 0.98)) {
       @supports not (color: oklch(0.6 0.2 90)) {
-        color: $header-footer-font-color;
+        color: $header-footer-font-color; /* Color estándar */
       }
     }
 
     padding: 0.5lvw;                /* Espaciado dentro del enlace */
     text-decoration: none;          /* Quita subrayado */
-
   }
 
   &__nav-list {
@@ -256,16 +251,16 @@
 /* Agregamos un contenedor con soporte de grid y container queries */
 
 .container {
-  display: flex; /* Por defecto, usar flexbox */
-  justify-content: center;
   align-items: center;
   background-image: url("../images/fondo.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   color: $white-color;
-  text-align: center;
+  display: flex; /* Por defecto, usar flexbox */
+  justify-content: center;
   min-height: 100vh;
+  text-align: center;
   width: 100vw;
 
   /* Estilos del logo */
@@ -325,9 +320,9 @@
   }
 
   @container (max-width: 799px) {
+    align-items: center;
     display: flex; /* Regresa a flexbox si el contenedor es más estrecho */
     flex-direction: column;
-    align-items: center;
     gap: 2rem;
 
     &__logo {
@@ -339,4 +334,3 @@
     }
   }
 }
-
