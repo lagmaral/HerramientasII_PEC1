@@ -6,27 +6,33 @@
             <img src="../assets/images/logo.png" alt="Logo" class="header__logo-image">
         </a>
 
-        <!-- Botón de hamburguesa para dispositivos pequeños -->
-        <button class="navbar-toggler header__toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light header__nav">
+            <div class="container-fluid">
 
-        <!-- Navegación principal -->
-        <nav class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto header__nav-list">
-                <li class="nav-item">
-                    <a href="../index.html" class="nav-link header__nav-link" data-page="index">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../views/speakers.html" class="nav-link header__nav-link" data-page="speakers">Speakers</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../views/aboutus.html" class="nav-link header__nav-link" data-page="aboutus">Acerca de</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../views/contact.html" class="nav-link header__nav-link" data-page="contact">Contacto</a>
-                </li>
-            </ul>
+                <!-- Botón para el menú desplegable en pantallas pequeñas -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Menú de navegación (se colapsa en pantallas pequeñas) -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto header__nav-list">
+                        <li class="nav-item">
+                            <a href="../index.html" class="nav-link header__nav-link" data-page="index">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../views/speakers.html" class="nav-link header__nav-link" data-page="speakers">Speakers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../views/aboutus.html" class="nav-link header__nav-link" data-page="aboutus">Acerca de</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../views/contact.html" class="nav-link header__nav-link" data-page="contact">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
+
     </div>
 </header>

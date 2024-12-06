@@ -1,118 +1,91 @@
+.speakers-container {
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  max-width: 1200px; /* Limita el ancho del contenedor */
+  padding: 20px; /* Espaciado interno */
 
-   .speakers-container {
-    margin: 0 auto; /* Centra el contenedor horizontalmente */
-    max-width: 1200px; /* Limita el ancho del contenedor */
-    padding: 20px; /* Espaciado interno */
+  &__grid {
+    display: flex; /* Utiliza Flexbox para distribuir las tarjetas */
+    flex-wrap: wrap; /* Permite que las tarjetas se ajusten a varias filas */
+    gap: 20px; /* Espaciado entre las tarjetas */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    margin: 0 auto; /* Centra horizontalmente */
+    padding: 20px; /* Espaciado interno adicional */
 
-
-    &__grid {
-      display: flex; /* Utiliza Flexbox para distribuir las tarjetas */
-      flex-wrap: wrap; /* Permite que las tarjetas se ajusten a varias filas */
-      gap: 20px; /* Espaciado entre las tarjetas */
-      justify-content: center; /* Centra las tarjetas horizontalmente */
-      margin: 0 auto; /* Centra horizontalmente */
-      max-width: 1200px; /* Limita el ancho máximo */
-      padding: 20px; /* Espaciado interno adicional */
-
-      @media (width <= 1024px) {
-        margin: 0 auto; /* Centra el contenido */
-        max-width: 1200px; /* Limita el ancho en pantallas grandes */
-
-      }
-
-
-      &__card {
-        background-color: $white-color; /* Fondo blanco */
-        border: 1px solid $border-color; /* Añade un borde con color */
-        border-radius: 10px; /* Esquinas redondeadas */
-        box-shadow: 0 4px 6px rgb(0 0 0 / 10%); /* Sombra sutil alrededor de la tarjeta */
-        display: flex; /* Flexbox para organizar el contenido interno */
-        flex: 1 1 calc(100% - 40px); /* En móviles, la tarjeta ocupa todo el ancho menos el espaciado */
-        flex-direction: column; /* Coloca la imagen y el texto en columnas */
-        max-width: 300px; /* Tamaño máximo de la tarjeta */
-        overflow: hidden; /* Oculta contenido desbordado */
-        padding: 15px; /* Espaciado interno */
-        text-align: center; /* Centra el texto */
-
-        &-img {
-          border-bottom: 1px solid $border-color; /* Línea separadora entre la imagen y el texto */
-          height: auto; /* Mantiene la proporción de la imagen */
-          width: 100%; /* Imagen ajustable al ancho */
-        }
-
-        &-text {
-          font-size: 16px; /* Tamaño del texto */
-          line-height: 1.5; /* Espaciado entre líneas para legibilidad */
-          margin: 15px 0 0; /* Espaciado superior */
-          text-align: justify; /* Justifica el texto */
-
-          /* Estilo del texto en negrita */
-          &:is(p) strong {
-            display: block; /* Negrita en línea separada */
-            margin-bottom: 10px; /* Espaciado inferior */
-            text-align: center; /* Centra el texto en negrita */
-
-            /* Soporte progresivo de colores avanzados */
-            @supports (color: oklch(0.6 0.2 90)) {
-              color: $header-footer-text-oklch; /* Color OKLCH */
-            }
-
-            @supports (color: color(display-p3 0.95 0.95 0.98)) and (not (color: oklch(0.6 0.2 90))) {
-              color: $header-footer-text-display-p3; /* Color Display-P3 si OKLCH no está disponible */
-            }
-
-            @supports not ((color: oklch(0.6 0.2 90)) or (color: color(display-p3 0.95 0.95 0.98))) {
-              color: $header-footer-text-color; /* Fallback para navegadores más antiguos */
-            }
-          }
-        }
-
-        /* Diseño adaptable para diferentes dispositivos */
-        @media (width <= 768px) {
-          flex: 1 1 calc(50% - 40px); /* En tablets, dos tarjetas por fila */
-        }
-
-        @media (width <= 1024px) {
-          flex: 1 1 calc(33.333% - 40px); /* En pantallas grandes, tres tarjetas por fila */
-        }
-
-        /* Modificador: Tarjeta destacada */
-        &:where(.highlighted) {
-          background-color: $highlightned-background-color; /* Fondo especial para tarjetas destacadas */
-
-          /* Soporte progresivo para bordes de colores avanzados */
-          @supports (color: oklch(0.6 0.2 90)) {
-            border-color: $header-footer-text-oklch; /* OKLCH para bordes */
-          }
-
-          @supports (color: color(display-p3 0.95 0.95 0.98)) and (not (color: oklch(0.6 0.2 90))) {
-            border-color: $header-footer-text-display-p3; /* Display-P3 para bordes */
-          }
-
-          @supports not ((color: oklch(0.6 0.2 90)) or (color: color(display-p3 0.95 0.95 0.98))) {
-            border-color: $header-footer-text-color; /* Fallback para navegadores antiguos */
-          }
-        }
-      }
+    /* Media query para pantallas grandes */
+    @media (max-width: 1024px) {
+      justify-content: space-between; /* Espaciado entre las tarjetas en pantallas más pequeñas */
     }
   }
+}
 
-  .speakers-container:has(h1) > h1 {
-    margin-bottom: 30px; /* Añade espacio debajo del título */
-    text-align: center; /* Centra el texto del título */
+.speakers-container:has(h1) > h1 {
+  margin-bottom: 30px; /* Añade espacio debajo del título */
+  text-align: center; /* Centra el texto del título */
 
-    /* Soporte progresivo para colores avanzados */
-    @supports (color: oklch(0.6 0.2 90)) {
-      color: $header-footer-text-oklch; /* Aplica un color moderno basado en OKLCH */
-    }
+  /* Soporte progresivo para colores avanzados */
+  @supports (color: oklch(0.6 0.2 90)) {
+    color: $header-footer-text-oklch; /* Aplica un color moderno basado en OKLCH */
+  }
 
-    @supports (color: color(display-p3 0.95 0.95 0.98)) and (not (color: oklch(0.6 0.2 90))) {
-      color: $header-footer-text-display-p3; /* Alternativa Display-P3 si OKLCH no está disponible */
-    }
+  @supports (color: color(display-p3 0.95 0.95 0.98)) and (not (color: oklch(0.6 0.2 90))) {
+    color: $header-footer-text-display-p3; /* Alternativa Display-P3 si OKLCH no está disponible */
+  }
 
-    @supports not (color: color(display-p3 0.95 0.95 0.98)) {
-      @supports not (color: oklch(0.6 0.2 90)) {
-        color: $header-footer-text-color; /* Fallback convencional */
-      }
+  @supports not (color: color(display-p3 0.95 0.95 0.98)) {
+    @supports not (color: oklch(0.6 0.2 90)) {
+      color: $header-footer-text-color; /* Fallback convencional */
     }
   }
+}
+
+/* Estilos de la tarjeta */
+.card {
+  background-color: $white-color; /* Fondo blanco */
+  border: 1px solid $border-color; /* Añade un borde con color */
+  border-radius: 10px; /* Esquinas redondeadas */
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%); /* Sombra sutil alrededor de la tarjeta */
+  display: flex; /* Flexbox para organizar el contenido interno */
+  flex-direction: column; /* Coloca la imagen y el texto en columnas */
+  padding: 15px; /* Espaciado interno */
+  text-align: center; /* Centra el texto */
+
+  /* Diseño adaptable para diferentes dispositivos */
+  flex: 1 1 calc(33.333% - 40px); /* Tres tarjetas por fila en pantallas grandes */
+  max-width: 300px; /* Tamaño máximo de la tarjeta */
+  overflow: hidden; /* Oculta contenido desbordado */
+
+  @media (max-width: 1024px) {
+    flex: 1 1 calc(50% - 40px); /* En tablets, dos tarjetas por fila */
+  }
+
+  @media (max-width: 768px) {
+    flex: 1 1 calc(100% - 40px); /* En móviles, una tarjeta por fila */
+  }
+}
+
+.card-body {
+  font-size: 16px; /* Tamaño del texto */
+  line-height: 1.5; /* Espaciado entre líneas para legibilidad */
+  margin: 15px 0 0; /* Espaciado superior */
+  text-align: justify; /* Justifica el texto */
+}
+
+.card-body h5 {
+  display: block; /* Título de la tarjeta */
+  margin-bottom: 10px; /* Espaciado inferior */
+  //text-align: center; /* Centra el texto en el título */
+  /* Soporte progresivo para colores avanzados */
+  @supports (color: oklch(0.6 0.2 90)) {
+    color: $header-footer-text-oklch; /* Aplica un color moderno basado en OKLCH */
+  }
+
+  @supports (color: color(display-p3 0.95 0.95 0.98)) and (not (color: oklch(0.6 0.2 90))) {
+    color: $header-footer-text-display-p3; /* Alternativa Display-P3 si OKLCH no está disponible */
+  }
+
+  @supports not (color: color(display-p3 0.95 0.95 0.98)) {
+    @supports not (color: oklch(0.6 0.2 90)) {
+      color: $header-footer-text-color; /* Fallback convencional */
+    }
+  }
+}

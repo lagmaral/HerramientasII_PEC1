@@ -58,19 +58,6 @@ document.addEventListener("DOMContentLoaded", function() {
       });
   });
 
-  const cards = document.querySelectorAll('.speakers-container__grid__card');
 
-  // Agregar eventos de hover
-  cards.forEach(card => {
-    // Agregar la clase "highlighted" al pasar el ratón
-    card.addEventListener('mouseenter', () => {
-      card.classList.add('highlighted');
-    });
-
-    // Quitar la clase "highlighted" al salir el ratón
-    card.addEventListener('mouseleave', () => {
-      card.classList.remove('highlighted');
-    });
-  });
 });
 

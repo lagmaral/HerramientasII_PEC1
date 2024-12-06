@@ -41,43 +41,69 @@
         border-color: var(--header-text-color); /* Color del borde */
       }
 
-      /* Elemento para la lista de navegación */
-      &__nav-list {
-        margin-right: 10lvw; /* Separación de los enlaces */
-      }
-
-      /* Modificador para los enlaces de navegación */
-      &__nav-link {
+      &__nav{
         /* Usar el soporte de OKLCH si está disponible */
         @supports (color: oklch(0.6 0.2 90)) {
+          background-color: $header-footer-background-oklch!important;
           color: $header-footer-font-color-oklch!important;
-          font-weight: 700!important;
         }
 
         /* Usar Display-P3 si OKLCH no está disponible, pero Display-P3 sí lo está */
         @supports (color: color(display-p3 0.95 0.95 0.98)) {
           @supports not (color: oklch(0.6 0.2 90)) {
+            background-color: $header-footer-background-display-p3!important;
             color: $header-footer-font-color-display-p3!important;
-            font-weight: 700!important;
           }
         }
 
         /* Fallback para navegadores que no soportan OKLCH ni Display-P3 */
         @supports not (color: color(display-p3 0.95 0.95 0.98)) {
           @supports not (color: oklch(0.6 0.2 90)) {
+            background-color: $header-footer-background-color!important;
             color: $header-footer-font-color!important;
-            font-weight: 700!important;
           }
         }
 
-        margin-left: 1rem; /* Separación entre enlaces */
+        /* Elemento para la lista de navegación */
+        &-list{
+          margin-right: 10lvw; /* Separación de los enlaces */
+        }
 
+        /* Modificador para los enlaces de navegación */
+        &-link {
+          /* Usar el soporte de OKLCH si está disponible */
+          @supports (color: oklch(0.6 0.2 90)) {
+            color: $header-footer-font-color-oklch!important;
+            font-weight: 700!important;
+          }
+
+          /* Usar Display-P3 si OKLCH no está disponible, pero Display-P3 sí lo está */
+          @supports (color: color(display-p3 0.95 0.95 0.98)) {
+            @supports not (color: oklch(0.6 0.2 90)) {
+              color: $header-footer-font-color-display-p3!important;
+              font-weight: 700!important;
+            }
+          }
+
+          /* Fallback para navegadores que no soportan OKLCH ni Display-P3 */
+          @supports not (color: color(display-p3 0.95 0.95 0.98)) {
+            @supports not (color: oklch(0.6 0.2 90)) {
+              color: $header-footer-font-color!important;
+              font-weight: 700!important;
+            }
+          }
+
+          margin-left: 1rem; /* Separación entre enlaces */
+
+        }
       }
 
-       /* Estilo para la barra de navegación */
-      &__navbar-nav {
-        margin-right: 10lvw; /* Separación de los enlaces */
-      }
+
+
+
+
+
+
 
       /* Estilo para el botón de hamburguesa */
       &__navbar-toggler-icon {

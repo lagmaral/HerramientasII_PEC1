@@ -1,6 +1,7 @@
 @use "sass:color";
 
 
+
 $font-family-sans-serif: -apple-system, blinkmacsystemfont, "Segoe UI", roboto,
   "Helvetica Neue", arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
   "Segoe UI Symbol";
@@ -21,3 +22,7 @@ $footer-font-color: #ac7ef7;
 $white-color: #fff;
 $border-color: #ddd;
 $highlightned-background-color: #f0f8ff;
+
+/* Sobreescritura de colores en bootstrap */
+$primary:  #00B5FF;
+$btn-primary-color: #240656;
