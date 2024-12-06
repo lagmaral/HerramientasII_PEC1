@@ -36,7 +36,10 @@
       height: 300px;
       object-fit: cover; /* Asegura que la imagen mantenga proporción */
       width: 300px;
-
+      @container (max-width: 768px) {
+        height: 150px;
+        width: 150px;
+      }
       @media (width <= 768px) {
         height: 150px;
         width: 150px;
@@ -72,6 +75,9 @@
       margin-left: calc(1dvmin + 15vw);
       text-align: left;
 
+      @container (max-width: 768px) {
+        margin-left: calc(1dvmin + 5vw);
+      }
       @media (width <= 768px) {
         margin-left: calc(1dvmin + 5vw);
       }
@@ -102,6 +108,9 @@
       margin-right: 15lvw;
       text-align: justify;
 
+      @container (max-width: 768px) {
+        margin-right: 5lvw;
+      }
       @media (width <= 768px) {
         margin-right: 5lvw;
       }
@@ -123,6 +132,10 @@
     margin-left: calc(1dvmin + 15vw);
     margin-right: 15lvw;
 
+    @container (max-width: 768px) {
+      margin-left: calc(1dvmin + 5vw);
+      margin-right: 5lvw;
+    }
     @media (width <= 768px) {
       margin-left: calc(1dvmin + 5vw);
       margin-right: 5lvw;
@@ -174,6 +187,10 @@
     margin-left: calc(1dvmin + 10vw);
     margin-right: 10lvw;
 
+    @container (max-width: 768px) {
+      margin-left: calc(1dvmin + 5vw);
+      margin-right: 5lvw;
+    }
     @media (width <= 768px) {
       margin-left: calc(1dvmin + 5vw);
       margin-right: 5lvw;
@@ -188,6 +205,10 @@
     margin-right: 15lvw;
     text-align: justify;
 
+    @container (max-width: 768px) {
+      margin-left: calc(1dvmin + 5vw);
+      margin-right: 5lvw;
+    }
     @media (width <= 768px) {
       margin-left: calc(1dvmin + 5vw);
       margin-right: 5lvw;
@@ -229,6 +250,10 @@
     margin-right: 15vw;
     padding: 0;
 
+    @container (max-width: 768px) {
+      margin-left: calc(1dvmin + 5vw);
+      margin-right: 5lvw;
+    }
     @media (width <= 768px) {
       margin-left: calc(1dvmin + 5vw);
       margin-right: 5lvw;

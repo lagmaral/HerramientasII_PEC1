@@ -253,66 +253,90 @@
   }
 }
 
-.container {
-  align-items: center;                  /* Centra el contenido verticalmente */
-  background-image: url("../images/fondo.jpg"); /* Imagen de fondo */
-  background-position: center;          /* Centra la imagen de fondo */
-  background-repeat: no-repeat;         /* Evita que la imagen de fondo se repita */
-  background-size: cover;               /* Escala la imagen para cubrir todo el contenedor */
-  color: $white-color;                  /* Color de texto */
-  display: flex;                        /* Flexbox para centrar contenido */
-  justify-content: center;              /* Centra el contenido horizontalmente */
-  min-height: 100vh;                    /* Asegura que el contenedor ocupe el alto de la pantalla */
-  text-align: center;                   /* Centra el texto */
-  width: 100vw;                         /* Ancho completo de la pantalla */
+/* Agregamos un contenedor con soporte de grid y container queries */
 
+.container {
+  display: flex; /* Por defecto, usar flexbox */
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/fondo.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: $white-color;
+  text-align: center;
+  min-height: 100vh;
+  width: 100vw;
+
+  /* Estilos del logo */
   &__logo img {
-    height: auto;                       /* Mantiene la proporción de la imagen */
-    margin-right: 2rem;                 /* Espacio a la derecha de la imagen */
-    max-width: 20vw;                    /* Limita el ancho de la imagen */
+    height: auto;
+    margin-right: 2rem;
+    max-width: 20vw;
   }
 
+  /* Contenido */
   &__contenido {
-    max-width: 50vw;                    /* Limita el ancho del contenido */
+    max-width: 50vw;
   }
 
   &__titulo {
-    font-size: 2rem;                    /* Tamaño de la fuente */
-    font-weight: 700;                  /* Texto en negrita */
-    margin-bottom: 1rem;                /* Espacio debajo del título */
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
   }
 
   &__subtitulo {
-    font-size: 1.2rem;                  /* Tamaño de la fuente del subtítulo */
-    font-weight: 700;                  /* Negrita en el subtítulo */
+    font-size: 1.2rem;
+    font-weight: 700;
   }
-}
 
-/* Cambia la disposición a Grid si es soportado */
-@supports (display: grid) {
-  .container {
-    display: grid;                      /* Cambia de Flexbox a Grid */
-    gap: 1rem;                          /* Espacio entre elementos en el grid */
-    grid-template-columns: 1fr 1fr;     /* Dos columnas de tamaño igual */
-    grid-template-rows: auto auto;      /* Dos filas automáticas */
+  /* Usamos Grid si el contenedor soporta Grid */
+  @supports (display: grid) {
+    display: grid; /* Cambiar de flexbox a grid */
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr; /* Dos columnas */
+    grid-template-rows: auto auto; /* Dos filas */
 
     &__logo {
-      grid-column: 1 / 2;               /* Coloca el logo en la primera columna */
-      grid-row: 1 / 3;                  /* Ocupa dos filas en la columna */
-      place-self: center;               /* Centra el logo horizontalmente */
+      grid-column: 1 / 2; /* Coloca el logo en la primera columna */
+      grid-row: 1 / 3;    /* El logo ocupa las dos filas */
+      place-self: center; /* Centra el logo en la columna */
     }
 
     &__contenido {
-      grid-column: 2 / 3;               /* Coloca el contenido en la segunda columna */
-      grid-row: 1 / 3;                  /* Ocupa dos filas en la segunda columna */
+      grid-column: 2 / 3; /* El contenido se coloca en la segunda columna */
+      grid-row: 1 / 3;    /* Ocupa ambas filas en la columna */
     }
 
     &__titulo {
-      grid-row: 1;                      /* Coloca el título en la primera fila */
+      grid-row: 1;
     }
 
     &__subtitulo {
-      grid-row: 2;                      /* Coloca el subtítulo en la segunda fila */
+      grid-row: 2;
+    }
+  }
+
+  /* Usando container queries */
+  @container (min-width: 800px) {
+    display: grid; /* Cambia a grid si el contenedor es lo suficientemente ancho */
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @container (max-width: 799px) {
+    display: flex; /* Regresa a flexbox si el contenedor es más estrecho */
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    &__logo {
+      margin-bottom: 1rem; /* Añade margen debajo del logo */
+    }
+
+    &__contenido {
+      max-width: 90vw; /* Ajusta el contenido */
     }
   }
 }
+

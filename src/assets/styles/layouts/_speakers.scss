@@ -1,23 +1,111 @@
-.speakers-container {
+@layer speaker-base, speaker-responsive;
+
+@layer speaker-base {
+
+  .speakers-container {
   margin: 0 auto; /* Centra el contenedor horizontalmente */
   max-width: 1200px; /* Limita el ancho del contenedor */
   padding: 20px; /* Espaciado interno */
 
-  &__grid {
-    display: flex; /* Utiliza Flexbox para distribuir las tarjetas */
-    flex-wrap: wrap; /* Permite que las tarjetas se ajusten a varias filas */
-    gap: 20px; /* Espaciado entre las tarjetas */
-    justify-content: center; /* Centra las tarjetas horizontalmente */
-    margin: 0 auto; /* Centra horizontalmente */
-    padding: 20px; /* Espaciado interno adicional */
+    &__grid {
+      display: flex; /* Utiliza Flexbox para distribuir las tarjetas */
+      flex-wrap: wrap; /* Permite que las tarjetas se ajusten a varias filas */
+      gap: 20px; /* Espaciado entre las tarjetas */
+      justify-content: center; /* Centra las tarjetas horizontalmente */
+      margin: 0 auto; /* Centra horizontalmente */
+      padding: 20px; /* Espaciado interno adicional */
 
-    /* Media query para pantallas grandes */
-    @media (max-width: 1024px) {
+    }
+  }
+
+
+
+  /* Estilos de la tarjeta */
+  .card {
+    background-color: $white-color; /* Fondo blanco */
+    border: 1px solid $border-color; /* Añade un borde con color */
+    border-radius: 10px; /* Esquinas redondeadas */
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%); /* Sombra sutil alrededor de la tarjeta */
+    display: flex; /* Flexbox para organizar el contenido interno */
+    flex-direction: column; /* Coloca la imagen y el texto en columnas */
+    padding: 15px; /* Espaciado interno */
+    text-align: center; /* Centra el texto */
+
+    /* Diseño adaptable para diferentes dispositivos */
+    flex: 1 1 calc(33.333% - 40px); /* Tres tarjetas por fila en pantallas grandes */
+    max-width: 300px; /* Tamaño máximo de la tarjeta */
+    overflow: hidden; /* Oculta contenido desbordado */
+  }
+
+  .card-body {
+    font-size: 16px; /* Tamaño del texto */
+    line-height: 1.5; /* Espaciado entre líneas para legibilidad */
+    margin: 15px 0 0; /* Espaciado superior */
+    text-align: justify; /* Justifica el texto */
+  }
+
+
+}
+
+@layer speaker-responsive {
+  /* Container query para dispositivos grandes (más de 1024px) */
+  @container (min-width: 1024px) {
+    .speakers-container__grid {
+      justify-content: space-between; /* Espaciado entre tarjetas */
+    }
+  }
+
+  /* Container query para dispositivos medianos (1024px a 768px) */
+  @container (max-width: 1024px) and (min-width: 769px) {
+    .speakers-container__grid {
       justify-content: space-between; /* Espaciado entre las tarjetas en pantallas más pequeñas */
+    }
+
+    .card {
+      flex: 1 1 calc(50% - 40px); /* En tablets, dos tarjetas por fila */
+    }
+  }
+
+  /* Container query para dispositivos pequeños (menos de 768px) */
+  @container (max-width: 768px) {
+    .speakers-container__grid {
+      justify-content: center; /* Centra las tarjetas */
+    }
+
+    .card {
+      flex: 1 1 calc(100% - 40px); /* Una tarjeta por fila */
+    }
+  }
+
+  /* Si no se soportan container queries, usamos las media queries tradicionales */
+  @media (min-width: 1024px) {
+    .speakers-container__grid {
+      justify-content: space-between; /* Espaciado entre tarjetas */
+    }
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .speakers-container__grid {
+      justify-content: space-between; /* Espaciado entre las tarjetas en pantallas medianas */
+    }
+
+    .card {
+      flex: 1 1 calc(50% - 40px); /* En tablets, dos tarjetas por fila */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .speakers-container__grid {
+      justify-content: center; /* Centra las tarjetas en pantallas pequeñas */
+    }
+
+    .card {
+      flex: 1 1 calc(100% - 40px); /* Una tarjeta por fila */
     }
   }
 }
 
+/* Metememos los estilos aqui porque con @layer hay problams con los  @supports */
 .speakers-container:has(h1) > h1 {
   margin-bottom: 30px; /* Añade espacio debajo del título */
   text-align: center; /* Centra el texto del título */
@@ -36,38 +124,6 @@
       color: $header-footer-text-color; /* Fallback convencional */
     }
   }
-}
-
-/* Estilos de la tarjeta */
-.card {
-  background-color: $white-color; /* Fondo blanco */
-  border: 1px solid $border-color; /* Añade un borde con color */
-  border-radius: 10px; /* Esquinas redondeadas */
-  box-shadow: 0 4px 6px rgb(0 0 0 / 10%); /* Sombra sutil alrededor de la tarjeta */
-  display: flex; /* Flexbox para organizar el contenido interno */
-  flex-direction: column; /* Coloca la imagen y el texto en columnas */
-  padding: 15px; /* Espaciado interno */
-  text-align: center; /* Centra el texto */
-
-  /* Diseño adaptable para diferentes dispositivos */
-  flex: 1 1 calc(33.333% - 40px); /* Tres tarjetas por fila en pantallas grandes */
-  max-width: 300px; /* Tamaño máximo de la tarjeta */
-  overflow: hidden; /* Oculta contenido desbordado */
-
-  @media (max-width: 1024px) {
-    flex: 1 1 calc(50% - 40px); /* En tablets, dos tarjetas por fila */
-  }
-
-  @media (max-width: 768px) {
-    flex: 1 1 calc(100% - 40px); /* En móviles, una tarjeta por fila */
-  }
-}
-
-.card-body {
-  font-size: 16px; /* Tamaño del texto */
-  line-height: 1.5; /* Espaciado entre líneas para legibilidad */
-  margin: 15px 0 0; /* Espaciado superior */
-  text-align: justify; /* Justifica el texto */
 }
 
 .card-body h5 {
